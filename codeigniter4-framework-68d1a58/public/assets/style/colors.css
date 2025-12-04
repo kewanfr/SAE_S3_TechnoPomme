@@ -4,6 +4,7 @@
     --primary: #adbc9f;
     --dim: #436850;
     --dark: #12372a;
+    --error: red;
 }
 
 .color-light {

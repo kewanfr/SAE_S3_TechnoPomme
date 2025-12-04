@@ -1,3 +1,5 @@
 .DS_Store
 .idea
 ignore/
+codeigniter4-framework-68d1a58/vendor
+codeigniter4-framework-68d1a58/writable

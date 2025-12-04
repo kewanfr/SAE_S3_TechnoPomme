@@ -16,22 +16,22 @@ class Login extends Controller {
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
 
-        $user = $this->userModel->getUserByEmail($email);
+        $auth = service('auth');
+        $credentials = [
+            'email' => $email,
+            'password' => $password,
+        ];
 
-        if ($user == null) {
+        $result = $auth->attempt($credentials);
+
+        if (! $result->isOk()) {
             return redirect()->to('/login?error=2');
-        } else {
-            $password_is_correct = password_verify($password, $user["HASH"]);
-
-            if (!$password_is_correct) {
-                return redirect()->to("/register?error=1");
-            }
-
-            if ($this->request->getPost('rememberme') != null) {
-                //TODO: token generation and storing
-            }
-
-            return redirect()->to('/');
         }
+
+        if ($this->request->getPost('rememberme') != null) {
+            //TODO: token generation and storing
+        }
+
+        return redirect("/");
     }
 }

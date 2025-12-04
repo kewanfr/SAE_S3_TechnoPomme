@@ -4,14 +4,12 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\Users;
+use CodeIgniter\Shield\Controllers\RegisterController;
+use CodeIgniter\Shield\Models\UserModel;
 
-class Register extends Controller
+class Register extends RegisterController
 {
-    protected $userModel;
 
-    public function __construct() {
-        $this->userModel = new Users();
-    }
 
     public function register() {
         $username = $this->request->getPost('username');
@@ -23,14 +21,20 @@ class Register extends Controller
             redirect("/register?error=1");
         }
 
-        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $users = new UserModel();
 
-        $result = $this->userModel->addUser($username, $email, $hash);
+        $user = $users->createNewUser([
+            'username' => $username,
+            'email' => $email,
+            'password' => $password,
+        ]);
+
+        $users->save($user);
 
         if ($this->request->getPost('rememberme') != null) {
             //TODO: add tokens and cookies and allat
         }
 
-        redirect("/");
+        return redirect("/");
     }
 }

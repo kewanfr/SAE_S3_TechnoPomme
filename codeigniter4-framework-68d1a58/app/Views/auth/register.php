@@ -14,6 +14,22 @@
     <label>S'inscrire</label>
     <div class="separator color-primary"></div>
 
+    <div class="errormessage">
+        <label>
+            <?php
+            if (isset($_GET['error'])) {
+                if ($_GET['error'] == 1) {
+                    echo "Le mot de passe et sa confirmation sont différents.";
+                } else if ($_GET['error'] == 2) {
+                    echo "Une erreur est survenue lors de la création du compte.";
+                } else {
+                    echo "unknown error code: " . $_GET['error'];
+                }
+            }
+            ?>
+        </label>
+    </div>
+
     <form action="/auth/register" method="post">
 
         <label for="username">Nom d'utilisateur:</label>

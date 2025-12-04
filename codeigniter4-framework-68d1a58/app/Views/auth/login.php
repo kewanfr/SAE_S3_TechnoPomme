@@ -14,8 +14,23 @@
     <label>Se connecter</label>
     <div class="separator color-primary"></div>
 
-    <form action="/auth/login" method="post">
+    <div class="errormessage">
+        <label>
+            <?php
+            if (isset($_GET['error'])) {
+                if ($_GET['error'] == 1) {
+                    echo "password is incorrect.";
+                } else if ($_GET['error'] == 2) {
+                    echo "email is incorrect.";
+                } else {
+                    echo "unknown error code: " . $_GET['error'];
+                }
+            }
+            ?>
+        </label>
+    </div>
 
+    <form action="/auth/login" method="post">
         <label for="email">E-mail:</label><br>
         <input id="email" type="email" name="email" class="textfield"><br>
 
