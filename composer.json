@@ -1,0 +1,8 @@
+{
+    "name": "e245055p/eq_2_03_bernier-kewan_landreau-louison_martineau-lilian_prono-goubert-kilyan_tanguy-corentin",
+    "description": "sae",
+    "type": "project",
+    "require": {
+        "codeigniter4/shield": "^1.2"
+    }
+}
