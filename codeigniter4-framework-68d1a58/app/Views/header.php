@@ -1,19 +1,13 @@
-<?php
-
-?>
-
-<!DOCTYPE html>
 <head>
-    <title>header</title>
-    <link rel="stylesheet" href="/assets/style/colors.css">
     <link rel="stylesheet" href="/assets/style/header.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 </head>
 <header class="headerbar">
     <div class="header-content">
         <div class="logo">
-            <a href="./index.html">
+            <a href="/">
                 <img class="logoimg" src="./assets/img/logo.png" alt="logo">
-                <span class="logotext separate">TechnoChantier</span>
+                <span class="logotext separate">PommeHub</span>
             </a>
         </div>
         <div class="navbar">
@@ -26,7 +20,7 @@
             <div class="small-search-container">
                 <i class="material-symbols-outlined small-search" style="font-size: 50px;">search</i>
             </div>
-            <a href="./account/login.html" class="login-link">
+            <a href="/login" class="login-link">
                 <i class="material-symbols-outlined loginicon" style="font-size: 50px;">account_circle</i>
                 <span class="login text">
                         Mon compte : <br>

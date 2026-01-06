@@ -1,4 +1,4 @@
-product_purchase.php<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,18 @@ product_purchase.php<!DOCTYPE html>
 </head>
 <body>
     <h1>Add a Product</h1>
+    
+    <?php if (session()->has('error')): ?>
+        <div style="color: red;">
+            <?= session('error') ?>
+        </div>
+    <?php endif; ?>
+    
+    <?php if (session()->has('success')): ?>
+        <div style="color: green;">
+            <?= session('success') ?>
+        </div>
+    <?php endif; ?>
     
     <form action="/product/add/add" method="post" enctype="multipart/form-data">
         <div>

@@ -5,6 +5,10 @@
     padding: 0;
 }
 
+body {
+    padding-top: 165px;
+}
+
 .headerbar {
     display: flex;
     width: 100%;
@@ -66,7 +70,7 @@
     display: inline;
     font-size: 30px;
     font-weight: 700;
-    color: var(--text);
+    color: var(--light);
     font-family: Arial, Helvetica, sans-serif;
     margin-right: 20px;
     width: 226.15;
@@ -82,7 +86,7 @@
     height: 38px;
     align-items: center;
     padding: 0px;
-    background: var(--text);
+    background: var(--light);
     border-radius: 5px;
 }
 
@@ -108,7 +112,7 @@
 .navbar.submit {
     width: 75px;
     margin-right: 0;
-    background-color: var(--light);
+    background-color: var(--bright);
     border: none;
     cursor: pointer;
 }
@@ -133,7 +137,7 @@
 
 .small-search-container {
     display: none;
-    color: var(--text);
+    color: var(--light);
     align-self: center;
     margin-right: 20px;
 }
@@ -141,7 +145,7 @@
 .login-link {
     display: flex;
     text-decoration: none;
-    color: var(--text);
+    color: var(--light);
     font-family: Arial, Helvetica, sans-serif;
     justify-content: center;
     align-items: center;
@@ -154,14 +158,14 @@
 }
 
 .login.text strong {
-    color: var(--light);
+    color: var(--bright);
     font-weight: 750;
 }
 
 .cart-link {
     display: flex;
     text-decoration: none;
-    color: var(--text);
+    color: var(--light);
     font-family: Arial, Helvetica, sans-serif;
     justify-content: center;
     align-items: center;
@@ -175,7 +179,7 @@
 }
 
 .cart.text strong {
-    color: var(--light);
+    color: var(--bright);
     font-weight: 750;
 }
 
@@ -230,7 +234,7 @@
     height: 35px;
     width: 100%;
     align-items: center;
-    color: var(--text);
+    color: var(--light);
     position: fixed;
     top: 125px;
     flex-direction: row;
@@ -266,7 +270,7 @@
 
 .menu a {
     display: flex;
-    color: var(--text);
+    color: var(--light);
     white-space: nowrap;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;

@@ -1,6 +1,4 @@
 
 <body>
-    <span id="title">NomProduit</span>
-
-    <!-- TODO: tout -->
+    <span id="title"><?=$name?></span>
 </body>

@@ -57,7 +57,7 @@ class Database extends Config
          * @var array<string, mixed>
          */
         public array $default = [
-            'database'    => '/var/home/E245055P/reseau/Perso/Annee_2/Semestre_1/SAE/SAE_R301/eq_2_03_bernier-kewan_landreau-louison_martineau-lilian_prono-goubert-kilyan_tanguy-corentin/codeigniter4-framework-68d1a58/db_sae.db',
+            'database'    =>  WRITEPATH . "db_sae.db",
             'DBDriver'    => 'SQLite3',
             'DBPrefix'    => '',
             'DBDebug'     => true,
