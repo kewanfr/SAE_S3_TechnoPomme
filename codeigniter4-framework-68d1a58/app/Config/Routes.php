@@ -21,6 +21,10 @@ $routes->post('/auth/register', 'Register::registerAction');
 $routes->get('/cookies/accept', 'Cookies::accept');
 $routes->get('/cookies/decline', 'Cookies::decline');
 
+// === Contact ===
+$routes->get('/contact', 'Contact::index');
+$routes->post('/contact/send', 'Contact::send');
+
 // === Produits ===
 $routes->get('/products', 'Products::index'); // Page catalogue publique
 $routes->get('/product/add', 'ProductController::add');
