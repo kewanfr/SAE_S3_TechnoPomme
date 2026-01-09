@@ -68,7 +68,7 @@
             </a>
         </div>
         <div class="navbar">
-            <form class="nav" action="http://51.255.50.155/info_request.php" method="post">
+            <form class="nav" action="/products" method="get">
                 <input type="search" name="search" placeholder="Rechercher des produits sur le site" class="navbar input">
                 <button type="submit" class="navbar submit"><span class="material-symbols-outlined search">search</span></button>
             </form>
