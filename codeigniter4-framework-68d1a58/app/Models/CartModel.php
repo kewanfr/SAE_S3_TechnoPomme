@@ -48,7 +48,7 @@ class CartModel extends Model
             return $builder->where([
                 'cart_id' => $cartId,
                 'product_id' => $productId
-            ])->update(['quantity' => $existing['quantity'] + $quantity]);
+            ])->update(['quantity' => $quantity]);;
         } else {
             // Récupère le prix du produit
             $productModel = new ProductModel();
