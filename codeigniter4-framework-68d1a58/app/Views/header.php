@@ -63,7 +63,7 @@
     <div class="header-content">
         <div class="logo">
             <a href="/">
-                <img class="logoimg" src="./assets/img/logo.png" alt="logo">
+                <img class="logoimg" src="/assets/img/logo.png" alt="logo">
                 <span class="logotext separate">PommeHub</span>
             </a>
         </div>

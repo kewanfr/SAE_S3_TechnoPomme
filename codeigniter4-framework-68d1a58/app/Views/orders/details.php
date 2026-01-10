@@ -211,7 +211,7 @@
         </table>
         
         <div style="margin-top: 30px; display: flex; gap: 15px;">
-            <a href="/orders" class="btn btn-secondary">Retour à mes commandes</a>
+            <a href="/orders" class="btn btn-secondary">← Retour à mes commandes</a>
             <a href="/" class="btn">Continuer mes achats</a>
         </div>
     </div>
