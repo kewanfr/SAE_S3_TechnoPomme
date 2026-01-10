@@ -36,7 +36,37 @@
     </div>
     <div class="info-group">
         <strong>Statut actuel:</strong> 
-        <span style="background: #ffc107; padding: 5px 10px; border-radius: 4px; display: inline-block;">
+        <?php
+        $statusColor = '#6c757d';
+        $statusBg = '#e9ecef';
+        switch($order['status']) {
+            case 'PAYEE':
+                $statusColor = '#856404';
+                $statusBg = '#fff3cd';
+                break;
+            case 'EN_PREPARATION':
+                $statusColor = '#856404';
+                $statusBg = '#fff3cd';
+                break;
+            case 'PRETE':
+                $statusColor = '#0c5460';
+                $statusBg = '#d1ecf1';
+                break;
+            case 'EXPEDIEE':
+                $statusColor = '#0c5460';
+                $statusBg = '#d1ecf1';
+                break;
+            case 'LIVREE':
+                $statusColor = '#155724';
+                $statusBg = '#d4edda';
+                break;
+            case 'ANNULEE':
+                $statusColor = '#721c24';
+                $statusBg = '#f8d7da';
+                break;
+        }
+        ?>
+        <span style="background: <?= $statusBg ?>; color: <?= $statusColor ?>; padding: 5px 12px; border-radius: 12px; display: inline-block; font-weight: bold; font-size: 13px;">
             <?= $order['status'] ?>
         </span>
     </div>
@@ -131,14 +161,15 @@
                 }
                 
                 foreach ($statuses as $status):
+                    $selected = ($status === $currentStatus) ? 'selected' : '';
                 ?>
-                    <option value="<?= $status ?>"><?= $status ?></option>
+                    <option value="<?= $status ?>" <?= $selected ?>><?= $status ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
         
         <?php if (!empty($statuses)): ?>
-            <button type="submit" class="btn-primary">Mettre à jour le statut</button>
+            <button type="submit" class="btn-primary" style="background: #8bc34a; color: white; padding: 12px 30px; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 15px; transition: all 0.3s;" onmouseover="this.style.background='#7cb342'" onmouseout="this.style.background='#8bc34a'">✓ Mettre à jour le statut</button>
         <?php else: ?>
             <p style="color: #999; font-style: italic;">
                 Aucune action disponible pour votre rôle sur cette commande.
@@ -149,9 +180,9 @@
     <?php if ($isAdmin || $isCommercial): ?>
         <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd;">
             <form method="post" action="/admin/orders/<?= $order['id'] ?>/cancel" 
-                  onsubmit="return confirm('Voulez-vous vraiment annuler cette commande ? Le stock sera restauré.');">
+                  onsubmit="return confirm('⚠️ Voulez-vous vraiment annuler cette commande ?\n\nLe stock des produits sera restauré automatiquement.');">
                 <input type="hidden" name="cancel" value="1">
-                <button type="submit" class="btn-danger">Annuler la commande</button>
+                <button type="submit" style="background: #dc3545; color: white; padding: 8px 18px; border: none; border-radius: 6px; cursor: pointer; font-weight: normal; font-size: 13px; transition: all 0.3s;" onmouseover="this.style.background='#c82333'" onmouseout="this.style.background='#dc3545'">✗ Annuler la commande</button>
             </form>
         </div>
     <?php endif; ?>
