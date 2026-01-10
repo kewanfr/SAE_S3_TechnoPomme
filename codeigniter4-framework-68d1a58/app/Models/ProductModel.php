@@ -96,24 +96,34 @@ class ProductModel extends Model
     {
         return $this->select('category')
             ->distinct()
-            ->where('category IS NOT NULL')
+            ->where('category IS NOT NULL AND category != ""')
             ->findAll();
     }
 
-    // Récupère tous les tags
+    // Récupère tous les tags avec plus de 2 articles
     public function getAllTags()
     {
         $products = $this->select('tags')->where('tags IS NOT NULL')->findAll();
-        $allTags = [];
+        $tagCount = [];
         
         foreach ($products as $product) {
             if (!empty($product['tags'])) {
                 $tags = explode(',', $product['tags']);
-                $allTags = array_merge($allTags, $tags);
+                foreach ($tags as $tag) {
+                    $tag = trim($tag);
+                    if (!empty($tag)) {
+                        $tagCount[$tag] = ($tagCount[$tag] ?? 0) + 1;
+                    }
+                }
             }
         }
         
-        return array_unique($allTags);
+        // Filtre les tags avec plus de 2 articles
+        $filteredTags = array_filter($tagCount, function($count) {
+            return $count >= 2;
+        });
+        
+        return array_keys($filteredTags);
     }
 
     /**

@@ -240,7 +240,7 @@
                         </a>
                     <?php endforeach; ?>
                 <?php endif; ?>
-            </div>
+            </div> <br />
             
             <div class="filter-group">
                 <label>Tags:</label>
