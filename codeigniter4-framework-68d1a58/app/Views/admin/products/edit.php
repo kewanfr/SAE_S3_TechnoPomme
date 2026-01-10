@@ -23,7 +23,7 @@
             <?php endif; ?>
             <label>Changer l'image</label>
             <input type="file" name="image" accept="image/*" style="padding: 10px; border: 2px dashed #ddd; border-radius: 8px; background: #f9f9f9;">
-            <small style="color: #666; font-size: 0.9em; display: block; margin-top: 5px;">Formats acceptés: JPG, PNG, GIF. Laissez vide pour conserver l'image actuelle.</small>
+            <small style="color: #666; font-size: 0.9em; display: block; margin-top: 5px;">Formats acceptés: JPG, PNG, GIF, WEBP. Laissez vide pour conserver l'image actuelle.</small>
         </div>
         
         <div class="form-group">
@@ -34,6 +34,7 @@
                 <option value="jus" <?= ($product['category'] ?? '') === 'jus' ? 'selected' : '' ?>>Jus</option>
                 <option value="vinaigre" <?= ($product['category'] ?? '') === 'vinaigre' ? 'selected' : '' ?>>Vinaigre</option>
                 <option value="accessoires" <?= ($product['category'] ?? '') === 'accessoires' ? 'selected' : '' ?>>Accessoires</option>
+                <option value="autre" <?= ($product['category'] ?? '') === 'autre' ? 'selected' : '' ?>>Autre</option>
             </select>
         </div>
         

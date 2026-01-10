@@ -161,7 +161,7 @@ class AdminController extends Controller
             $validationRule = [
                 'image' => [
                     'uploaded[image]',
-                    'mime_in[image,image/jpg,image/jpeg,image/png,image/gif]',
+                    'mime_in[image,image/jpg,image/jpeg,image/png,image/gif,image/webp]',
                     'max_size[image,2048]', // 2MB max
                 ],
             ];
