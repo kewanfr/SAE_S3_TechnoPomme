@@ -64,7 +64,7 @@
         <div class="logo">
             <a href="/">
                 <img class="logoimg" src="/assets/img/logo.png" alt="logo">
-                <span class="logotext separate">PommeHub</span>
+                <span class="logotext separate">TechnoPomme</span>
             </a>
         </div>
         <div class="navbar">

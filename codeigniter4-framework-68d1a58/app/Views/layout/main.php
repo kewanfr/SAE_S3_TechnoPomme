@@ -216,7 +216,7 @@
         </h2>
         <div style="max-width: 900px; margin: 0 auto; line-height: 1.8; color: #333;">
             <p style="font-size: 1.1em; margin-bottom: 15px;">
-                Bienvenue chez <strong>PommeHub</strong>, votre cidrerie artisanale de tradition bretonne.
+                Bienvenue chez <strong>TechnoPomme</strong>, votre cidrerie artisanale de tradition bretonne.
                 Nous sommes fiers de perpétuer un savoir-faire ancestral transmis de génération en génération à travers cette cidrerie familiale, ainsi que la plateforme PommeHub, regroupant plusieurs produits de cidreries artisanales de la région. 
                 Filiale de <strong>Technochantier & CIE</strong>, nous cultivons nos vergers avec passion depuis plus de 30 ans 
                 et produisons des cidres, jus de pomme et vinaigres d'exception.
@@ -229,7 +229,7 @@
             <p style="font-size: 0.95em; margin-bottom: 15px; color: #666; font-style: italic;">
                 <strong>Technochantier & CIE</strong> est notre groupe familial qui regroupe également nos sociétés sœurs : <br />
                 <a href="https://technochantier.kewan.fr/" target="_blank" style="text-decoration: none; font-weight: bold;">Technochantier</a> (équipements de chantier innovants), <a href="https://dassault.kewan.fr/" target="_blank" style="text-decoration: none; font-weight: bold;">Dassault Aviation</a>, 
-                <strong>GlobalBeats</strong> (plateforme musicale), <a href="https://drive.google.com/file/d/13PCXfaCm7-R-S_K38ZEEr_gcUSvgUumz/view?usp=sharing" target="_blank" style="text-decoration: none; font-weight: bold;">Marc&Co (Leader du dosage anisé avec le Ricassou 3000)</a>,
+                <strong>GlobalBeats</strong> (plateforme musicale), <a href="https://drive.google.com/file/d/13PCXfaCm7-R-S_K38ZEEr_gcUSvgUumz/view?usp=sharing" target="_blank" style="text-decoration: none; font-weight: bold;">Marc&Co</a> (Leader du dosage anisé avec le Ricassou 3000),
                 <a href="https://www.canva.com/design/DAGpexFnL78/URfhrRUflnu_joc9DE2KyQ/edit" target="_blank" style="text-decoration: none; font-weight: bold;">Brickophone</a> (smartphone modulaires et facilement réparables) et <strong>RéparEco</strong> (formation de réparations d'équipements électroniques).
             </p>
             <p style="font-size: 1.1em; color: #8bc34a; font-weight: bold; text-align: center; margin-top: 20px;">

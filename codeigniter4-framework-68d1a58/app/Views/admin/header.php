@@ -225,7 +225,7 @@
         <a href="/" class="back-link">← Retour au site</a>
         
         <a href="/" style="text-decoration: none; color: white;">
-            <h1>Administration PommeHub</h1>
+            <h1>Administration TechnoPomme</h1>
         </a>
         <div class="admin-nav">
             <nav>
