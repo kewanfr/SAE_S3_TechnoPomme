@@ -12,7 +12,7 @@ class ProductModel extends Model
 {
     protected $table = 'products';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['name', 'desc', 'img_src', 'price', 'quantity', 'category', 'tags'];
+    protected $allowedFields = ['name', 'desc', 'img_src', 'price', 'quantity', 'format', 'category', 'tags'];
     protected $returnType = 'array';
     protected $useTimestamps = false;
 

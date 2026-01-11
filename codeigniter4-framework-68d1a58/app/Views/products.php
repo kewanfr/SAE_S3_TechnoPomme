@@ -5,14 +5,23 @@
         $img = "/assets/img/missing_product.jpg";
     }
     ?>
-    <img class='product_img' src='<?= $img ?>' alt='<?= esc($name ?? 'Produit') ?>'>
+    <a href="/product/<?= $id ?>" style="text-decoration: none; color: inherit;">
+        <img class='product_img' src='<?= $img ?>' alt='<?= esc($name ?? 'Produit') ?>'>
+    </a>
     
     <div class='product_info'>
         <?php if (!empty($category)): ?>
             <div><span class="category-tag"><?= esc($category) ?></span></div>
         <?php endif; ?>
         
-        <span class='product_name'><?= esc($name ?? 'Nom du produit') ?></span>
+        <a href="/product/<?= $id ?>" style="text-decoration: none; color: inherit;">
+            <span class='product_name'><?= esc($name ?? 'Nom du produit') ?></span>
+        </a>
+        
+        <?php if (!empty($format)): ?>
+            <span style="font-size: 0.9em; color: #2196f3; font-weight: bold;">📏 <?= esc($format) ?></span>
+        <?php endif; ?>
+        
         <span class='product_desc'><?= esc($desc ?? 'Description du produit') ?></span>
         
         <?php if (!empty($tags)): ?>

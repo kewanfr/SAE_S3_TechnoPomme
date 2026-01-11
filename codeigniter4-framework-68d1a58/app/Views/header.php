@@ -147,8 +147,8 @@ window.addEventListener('DOMContentLoaded', function() {
 
 // Fonction pour ajouter au panier
 function addToCart(productId, button) {
-    const qtyInput = button.previousElementSibling;
-    const quantity = qtyInput.value;
+    const qtyInput = document.getElementById('qty-' + productId);
+    const quantity = qtyInput ? qtyInput.value : 1;
     const feedback = button.nextElementSibling;
     
     // Désactive le bouton
@@ -165,6 +165,8 @@ function addToCart(productId, button) {
     })
     .then(response => response.json())
     .then(data => {
+        console.log('Réponse du serveur:', data);
+        
         // Si redirection nécessaire (non connecté)
         if (data.redirect) {
             alert(data.message || 'Vous devez être connecté pour ajouter au panier');
@@ -187,6 +189,7 @@ function addToCart(productId, button) {
                 feedback.style.display = 'none';
             }, 2000);
         } else {
+            console.error('Erreur serveur:', data.message);
             button.style.background = '#dc3545';
             button.textContent = data.message || 'Erreur';
             setTimeout(() => {
@@ -197,8 +200,9 @@ function addToCart(productId, button) {
         }
     })
     .catch(error => {
+        console.error('Erreur AJAX:', error);
         button.style.background = '#dc3545';
-        button.textContent = 'Erreur';
+        button.textContent = 'Erreur réseau';
         setTimeout(() => {
             button.style.background = '#28a745';
             button.textContent = 'Ajouter au panier';

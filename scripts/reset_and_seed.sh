@@ -12,7 +12,7 @@ echo "[reset] Removing SQLite database file: $DB_FILE"
 docker exec php bash -lc "rm -f '$DB_FILE'"
 
 echo "[migrate] Running migrations"
-docker exec php bash -lc "cd '$APP_DIR' && php spark migrate --all"
+docker exec php bash -lc "cd '$APP_DIR' && php spark migrate"
 
 echo "[seed] Seeding MasterSeeder (users, products, roles)"
 docker exec php bash -lc "cd '$APP_DIR' && php spark db:seed MasterSeeder"

@@ -36,4 +36,20 @@ class Products extends BaseController
 
         return view('products_page', $data);
     }
+
+    public function detail($id): string
+    {
+        $model = new ProductModel();
+        $product = $model->find($id);
+        
+        if (!$product) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+        
+        $data = [
+            'product' => $product
+        ];
+        
+        return view('product_detail', $data);
+    }
 }

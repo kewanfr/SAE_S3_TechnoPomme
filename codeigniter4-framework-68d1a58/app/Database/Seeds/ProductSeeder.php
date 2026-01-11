@@ -15,6 +15,7 @@ class ProductSeeder extends Seeder
                 'img_src' => '/assets/img/products/cidre-brut.webp',
                 'price' => 4.50,
                 'quantity' => 120,
+                'format' => '75cl',
                 'category' => 'Cidres',
                 'tags' => 'brut,traditionnel,bio'
             ],
@@ -24,6 +25,7 @@ class ProductSeeder extends Seeder
                 'img_src' => '/assets/img/products/cidre-doux.webp',
                 'price' => 4.50,
                 'quantity' => 95,
+                'format' => '75cl',
                 'category' => 'Cidres',
                 'tags' => 'doux,fruité'
             ],
@@ -33,6 +35,7 @@ class ProductSeeder extends Seeder
                 'img_src' => '/assets/img/products/jus-pomme.webp',
                 'price' => 3.20,
                 'quantity' => 150,
+                'format' => '1L',
                 'category' => 'Jus',
                 'tags' => 'jus,sans-alcool,bio'
             ],
@@ -42,6 +45,7 @@ class ProductSeeder extends Seeder
                 'img_src' => '/assets/img/products/vinaigre.webp',
                 'price' => 5.80,
                 'quantity' => 60,
+                'format' => '50cl',
                 'category' => 'Vinaigres',
                 'tags' => 'vinaigre,bio,artisanal'
             ],
@@ -51,6 +55,7 @@ class ProductSeeder extends Seeder
                 'img_src' => '/assets/img/products/cidre-rose.webp',
                 'price' => 5.20,
                 'quantity' => 80,
+                'format' => '75cl',
                 'category' => 'Cidres',
                 'tags' => 'rosé,fruité,premium'
             ],
@@ -60,6 +65,7 @@ class ProductSeeder extends Seeder
                 'img_src' => '/assets/img/products/calvados-5ans.webp',
                 'price' => 28.50,
                 'quantity' => 25,
+                'format' => '70cl',
                 'category' => 'Spiritueux',
                 'tags' => 'calvados,premium,spiritueux'
             ],
@@ -87,6 +93,7 @@ class ProductSeeder extends Seeder
                 'img_src' => '/assets/img/products/cidre-epice.webp',
                 'price' => 5.50,
                 'quantity' => 85,
+                'format' => '75cl',
                 'category' => 'Cidres',
                 'tags' => 'épicé,premium,hivernal'
             ],
@@ -96,6 +103,7 @@ class ProductSeeder extends Seeder
                 'img_src' => '/assets/img/products/cidre-petillante.webp',
                 'price' => 6.50,
                 'quantity' => 110,
+                'format' => '75cl',
                 'category' => 'Cidres',
                 'tags' => 'pétillant,frais,premium'
             ],
@@ -105,6 +113,7 @@ class ProductSeeder extends Seeder
                 'img_src' => '/assets/img/products/cidre-sec.webp',
                 'price' => 7.20,
                 'quantity' => 65,
+                'format' => '75cl',
                 'category' => 'Cidres',
                 'tags' => 'sec,premium,artisanal'
             ],
@@ -114,6 +123,7 @@ class ProductSeeder extends Seeder
                 'img_src' => '/assets/img/products/jus-miel.webp',
                 'price' => 4.50,
                 'quantity' => 140,
+                'format' => '1L',
                 'category' => 'Jus',
                 'tags' => 'jus,miel,sans-alcool'
             ],
@@ -123,6 +133,7 @@ class ProductSeeder extends Seeder
                 'img_src' => '/assets/img/products/jus-raisin.webp',
                 'price' => 4.80,
                 'quantity' => 130,
+                'format' => '1L',
                 'category' => 'Jus',
                 'tags' => 'jus,fruité,sans-alcool'
             ],
@@ -132,6 +143,7 @@ class ProductSeeder extends Seeder
                 'img_src' => '/assets/img/products/jus-poire.webp',
                 'price' => 4.80,
                 'quantity' => 125,
+                'format' => '1L',
                 'category' => 'Jus',
                 'tags' => 'jus,poire,bio,sans-alcool'
             ],
@@ -141,6 +153,7 @@ class ProductSeeder extends Seeder
                 'img_src' => '/assets/img/products/vinaigre-balsamique.webp',
                 'price' => 7.50,
                 'quantity' => 50,
+                'format' => '50cl',
                 'category' => 'Vinaigres',
                 'tags' => 'vinaigre,premium,gastronomie'
             ],
@@ -150,6 +163,7 @@ class ProductSeeder extends Seeder
                 'img_src' => '/assets/img/products/vinaigre-herbes.webp',
                 'price' => 6.80,
                 'quantity' => 55,
+                'format' => '50cl',
                 'category' => 'Vinaigres',
                 'tags' => 'vinaigre,herbes,artisanal'
             ],
@@ -159,6 +173,7 @@ class ProductSeeder extends Seeder
                 'img_src' => '/assets/img/products/calvados-10ans.webp',
                 'price' => 45.00,
                 'quantity' => 15,
+                'format' => '70cl',
                 'category' => 'Spiritueux',
                 'tags' => 'calvados,premium,spiritueux,luxe'
             ],
@@ -168,6 +183,7 @@ class ProductSeeder extends Seeder
                 'img_src' => '/assets/img/products/calvados-10ans.webp',
                 'price' => 35.00,
                 'quantity' => 20,
+                'format' => '70cl',
                 'category' => 'Spiritueux',
                 'tags' => 'calvados,premium,spiritueux'
             ],
@@ -248,8 +264,7 @@ class ProductSeeder extends Seeder
                 'desc' => 'Cidre fruité aromatisé à la pêche. Doux et savoureux pour l\'été.',
                 'img_src' => '/assets/img/products/cidre-peche.webp',
                 'price' => 5.50,
-                'quantity' => 90,
-                'category' => 'Cidres',
+                'quantity' => 90,                'format' => '75cl',                'category' => 'Cidres',
                 'tags' => 'cidre,pêche,fruité,été'
             ],
             [
@@ -258,6 +273,7 @@ class ProductSeeder extends Seeder
                 'img_src' => '/assets/img/products/cidre-framboise.webp',
                 'price' => 6.00,
                 'quantity' => 75,
+                'format' => '75cl',
                 'category' => 'Cidres',
                 'tags' => 'cidre,framboise,fruité,premium'
             ],
