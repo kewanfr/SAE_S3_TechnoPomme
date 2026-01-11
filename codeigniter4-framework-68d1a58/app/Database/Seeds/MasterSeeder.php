@@ -15,5 +15,8 @@ class MasterSeeder extends Seeder
 
         // Utilisateurs (avec rôles automatiques)
         $this->call(UserSeeder::class);
+        
+        // Commandes
+        $this->call(OrderSeeder::class);
     }
 }
