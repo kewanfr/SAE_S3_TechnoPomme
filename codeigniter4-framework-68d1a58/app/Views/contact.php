@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - technopomme</title>
+    <title>Contact - TechnoPomme</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -149,15 +149,15 @@
                     <span>📍</span>
                     <div>
                         <strong>Adresse:</strong><br>
-                        123 Route du Cidre<br>
-                        29000 Quimper, Bretagne
+                        Kermabo<br>
+                        56620 Guidel, Morbihan (Bretagne)
                     </div>
                 </div>
                 <div class="info-item">
                     <span>📞</span>
                     <div>
                         <strong>Téléphone:</strong><br>
-                        02 98 XX XX XX
+                        02 97 65 94 38
                     </div>
                 </div>
                 <div class="info-item">
@@ -171,8 +171,8 @@
                     <span>🕐</span>
                     <div>
                         <strong>Horaires:</strong><br>
-                        Lun-Ven: 9h-18h<br>
-                        Sam: 9h-12h
+                        Semaine : 10h-12h 15h-18h<br>
+                        Jeudi et Dimanche : fermé
                     </div>
                 </div>
             </div>

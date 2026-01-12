@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cidrerie</title>
+    <title>Acceuil - TechnoPomme</title>
     <style>
         html, body {
             margin: 0;
@@ -319,7 +319,7 @@
     
     <!-- Produits phares -->
     <div style="background: rgba(255,255,255,0.95); padding: 40px 20px; margin: 20px; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.15);">
-        <h2 style="color: #c41e3a; font-size: 2em; margin-bottom: 30px; text-align: center; align-items:center;">⭐ Nos Produits Phares</h2>
+        <h2 style="color: #c41e3a; font-size: 2em; margin-bottom: 30px; text-align: center; align-items:center;">Nos Produits Phares</h2>
         <div class="products-container" style="margin-bottom: 30px;">
             <?php 
             $featuredProducts = array_slice($products, 0, 3); 

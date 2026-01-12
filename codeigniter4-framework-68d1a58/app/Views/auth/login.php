@@ -6,7 +6,7 @@ namespace CodeIgniter\Views\auth;
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Connexion - TechnoPomme</title>
     <link rel="stylesheet" href="/assets/style/colors.css">
     <link rel="stylesheet" href="/assets/style/login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">

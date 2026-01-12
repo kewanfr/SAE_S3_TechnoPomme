@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détails de la commande #<?= $order['id'] ?></title>
+    <title>Commande #<?= $order['id'] ?> - TechnoPomme</title>
     <style>
         * {
             margin: 0;

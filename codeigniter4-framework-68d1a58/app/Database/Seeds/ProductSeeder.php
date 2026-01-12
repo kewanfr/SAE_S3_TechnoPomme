@@ -88,7 +88,7 @@ class ProductSeeder extends Seeder
                 'tags' => 'coffret,cadeau,découverte'
             ],
             [
-                'name' => 'Cidre Épicée Cannelle',
+                'name' => 'Cidre Épicé Cannelle',
                 'desc' => 'Cidre brut aromatisé aux épices, cannelle douce et notes chaudes. Idéal en hiver.',
                 'img_src' => '/assets/img/products/cidre-epice.webp',
                 'price' => 5.50,
@@ -98,7 +98,7 @@ class ProductSeeder extends Seeder
                 'tags' => 'épicé,premium,hivernal'
             ],
             [
-                'name' => 'Cidre Pétillante',
+                'name' => 'Cidre Pétillant',
                 'desc' => 'Cidre légèrement pétillante aux bulles fines. Fraîcheur et légèreté garanties.',
                 'img_src' => '/assets/img/products/cidre-petillante.webp',
                 'price' => 6.50,

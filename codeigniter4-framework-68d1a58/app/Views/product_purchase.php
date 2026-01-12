@@ -1,4 +1,4 @@
 
 <body>
-    <span id="title"><?=$name?></span>
+    <span id="title"><?=$name?> - TechnoPomme</span>
 </body>
