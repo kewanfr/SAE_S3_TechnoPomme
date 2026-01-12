@@ -137,7 +137,7 @@
         <h2 class="profile-title">
             Informations personnelles
             <?php if ($user->customer_type === 'professionnel'): ?>
-                <span class="badge-pro">⭐ PRO</span>
+                <span class="badge-pro">PRO</span>
             <?php endif; ?>
         </h2>
         

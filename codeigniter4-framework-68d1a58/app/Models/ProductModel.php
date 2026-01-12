@@ -12,7 +12,7 @@ class ProductModel extends Model
 {
     protected $table = 'products';
     protected $primaryKey = 'id';
-    protected $allowedFields = ['name', 'desc', 'img_src', 'price', 'tva_rate', 'quantity', 'format', 'category', 'tags', 'is_active'];
+    protected $allowedFields = ['name', 'desc', 'img_src', 'price', 'tva_rate', 'quantity', 'format', 'category', 'is_active'];
     protected $returnType = 'array';
     protected $useTimestamps = false;
 
@@ -38,11 +38,17 @@ class ProductModel extends Model
     // Produits actifs (catalogue public) avec pagination optionnelle
     public function getAllActiveProducts(?int $limit = null, int $offset = 0)
     {
-        $builder = $this->where('is_active', 1);
+        $builder = $this->builder();
+        $builder->select('products.*, GROUP_CONCAT(tags.name) AS tags')
+            ->join('product_tags', 'product_tags.product_id = products.id', 'left')
+            ->join('tags', 'tags.id = product_tags.tag_id', 'left')
+            ->where('is_active', 1)
+            ->groupBy('products.id');
+
         if ($limit !== null) {
-            return $builder->findAll($limit, $offset);
+            $builder->limit($limit, $offset);
         }
-        return $builder->findAll();
+        return $builder->get()->getResultArray();
     }
 
     // Compte le nombre de produits actifs
@@ -88,32 +94,35 @@ class ProductModel extends Model
     public function searchAndFilter($search = null, $category = null, $tag = null, $minPrice = null, $maxPrice = null, ?int $limit = null, int $offset = 0)
     {
         $builder = $this->builder();
-        
+        $builder->select('products.*, GROUP_CONCAT(tags.name) AS tags')
+            ->join('product_tags', 'product_tags.product_id = products.id', 'left')
+            ->join('tags', 'tags.id = product_tags.tag_id', 'left');
+
         if ($search) {
             $builder->groupStart()
-                ->like('name', $search)
-                ->orLike('desc', $search)
+                ->like('products.name', $search)
+                ->orLike('products.desc', $search)
                 ->groupEnd();
         }
-        
+
         if ($category) {
-            $builder->where('category', $category);
+            $builder->where('products.category', $category);
         }
-        
+
         if ($tag) {
-            $builder->like('tags', $tag);
+            $builder->where('tags.name', $tag);
         }
-        
+
         if ($minPrice !== null && $minPrice !== '') {
-            $builder->where('price >=', (float)$minPrice);
+            $builder->where('products.price >=', (float)$minPrice);
         }
-        
+
         if ($maxPrice !== null && $maxPrice !== '') {
-            $builder->where('price <=', (float)$maxPrice);
+            $builder->where('products.price <=', (float)$maxPrice);
         }
-        
-        // Exclut les produits inactifs du catalogue
-        $builder->where('is_active', 1);
+
+        $builder->where('products.is_active', 1)
+                ->groupBy('products.id');
 
         if ($limit !== null) {
             $builder->limit($limit, $offset);
@@ -126,32 +135,37 @@ class ProductModel extends Model
     public function countFiltered($search = null, $category = null, $tag = null, $minPrice = null, $maxPrice = null): int
     {
         $builder = $this->builder();
-        
+        $builder->select('products.id')
+            ->join('product_tags', 'product_tags.product_id = products.id', 'left')
+            ->join('tags', 'tags.id = product_tags.tag_id', 'left');
+
         if ($search) {
             $builder->groupStart()
-                ->like('name', $search)
-                ->orLike('desc', $search)
+                ->like('products.name', $search)
+                ->orLike('products.desc', $search)
                 ->groupEnd();
         }
-        
+
         if ($category) {
-            $builder->where('category', $category);
+            $builder->where('products.category', $category);
         }
-        
+
         if ($tag) {
-            $builder->like('tags', $tag);
+            $builder->where('tags.name', $tag);
         }
-        
+
         if ($minPrice !== null && $minPrice !== '') {
-            $builder->where('price >=', (float)$minPrice);
+            $builder->where('products.price >=', (float)$minPrice);
         }
-        
+
         if ($maxPrice !== null && $maxPrice !== '') {
-            $builder->where('price <=', (float)$maxPrice);
+            $builder->where('products.price <=', (float)$maxPrice);
         }
-        
-        $builder->where('is_active', 1);
-        return $builder->countAllResults();
+
+        $builder->where('products.is_active', 1)
+                ->groupBy('products.id');
+
+        return $builder->get()->getNumRows();
     }
 
     // Récupère toutes les catégories
@@ -166,27 +180,24 @@ class ProductModel extends Model
     // Récupère tous les tags avec plus de 2 articles
     public function getAllTags()
     {
-        $products = $this->select('tags')->where('tags IS NOT NULL')->findAll();
-        $tagCount = [];
-        
-        foreach ($products as $product) {
-            if (!empty($product['tags'])) {
-                $tags = explode(',', $product['tags']);
-                foreach ($tags as $tag) {
-                    $tag = trim($tag);
-                    if (!empty($tag)) {
-                        $tagCount[$tag] = ($tagCount[$tag] ?? 0) + 1;
-                    }
-                }
-            }
-        }
-        
-        // Filtre les tags avec plus de 2 articles
-        $filteredTags = array_filter($tagCount, function($count) {
-            return $count >= 2;
-        });
-        
-        return array_keys($filteredTags);
+        $builder = $this->db->table('tags');
+        $builder->select('tags.name, COUNT(product_tags.tag_id) AS cnt')
+            ->join('product_tags', 'product_tags.tag_id = tags.id', 'inner')
+            ->groupBy('tags.name')
+            ->having('cnt >=', 2)
+            ->orderBy('tags.name', 'ASC');
+        $rows = $builder->get()->getResultArray();
+        return array_column($rows, 'name');
+    }
+    public function getProductWithTagsById(int $id)
+    {
+        $builder = $this->builder();
+        $builder->select('products.*, GROUP_CONCAT(tags.name) AS tags')
+            ->join('product_tags', 'product_tags.product_id = products.id', 'left')
+            ->join('tags', 'tags.id = product_tags.tag_id', 'left')
+            ->where('products.id', $id)
+            ->groupBy('products.id');
+        return $builder->get()->getRowArray();
     }
 
     /**

@@ -338,7 +338,7 @@
     <!-- Tous les produits sur la page d'accueil -->
     <div id="all-products" style="margin-top: 40px;">
         <h2 style="color: #8b4513; font-size: 1.8em; margin: 20px; text-align: center; background: rgba(255,255,255,0.8); padding: 20px; border-radius: 10px;">
-            📦 Tous nos produits
+            Tous nos produits
         </h2>
         
         <div class="products-container">

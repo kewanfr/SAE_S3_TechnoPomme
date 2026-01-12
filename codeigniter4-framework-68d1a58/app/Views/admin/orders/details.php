@@ -22,7 +22,7 @@
     <div class="info-group">
         <strong>Utilisateur:</strong> <?= esc($order['username']) ?>
         <?php if ($order['customer_type'] === 'professionnel'): ?>
-            <span style="background: linear-gradient(135deg, #ffd700, #ffed4e); color: #8b6914; padding: 4px 8px; border-radius: 8px; font-size: 11px; font-weight: bold; display: inline-flex; align-items: center; gap: 3px; margin-left: 8px;">⭐ PRO</span>
+            <span style="background: linear-gradient(135deg, #ffd700, #ffed4e); color: #8b6914; padding: 4px 8px; border-radius: 8px; font-size: 11px; font-weight: bold; display: inline-flex; align-items: center; gap: 3px; margin-left: 8px;">PRO</span>
         <?php endif; ?>
     </div>
     <?php if ($order['customer_type'] === 'professionnel'): ?>
@@ -103,11 +103,6 @@
     <div class="info-group">
         <strong>Mode de livraison:</strong>
         <?php
-        $deliveryIcons = [
-            'pickup' => '🏪',
-            'local_delivery' => '🚗',
-            'carrier_delivery' => '📦'
-        ];
         $deliveryNames = [
             'pickup' => 'Retrait à la cidrerie',
             'local_delivery' => 'Livraison locale',
@@ -115,7 +110,7 @@
         ];
         $deliveryMethod = $order['delivery_method'] ?? 'pickup';
         ?>
-        <?= $deliveryIcons[$deliveryMethod] ?? '🏪' ?> <?= $deliveryNames[$deliveryMethod] ?? 'Retrait à la cidrerie' ?>
+        <?= $deliveryNames[$deliveryMethod] ?? 'Retrait à la cidrerie' ?>
     </div>
     <div class="info-group">
         <strong>Frais de livraison:</strong> <?= number_format($order['delivery_cost'] ?? 0, 2) ?> €

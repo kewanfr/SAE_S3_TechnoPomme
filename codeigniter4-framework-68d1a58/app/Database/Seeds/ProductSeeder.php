@@ -279,9 +279,93 @@ class ProductSeeder extends Seeder
             ],
         ];
 
+        $allowedTags = [
+            'brut', 'doux', 'fruité', 'bio', 'premium', 'artisanal',
+            'jus', 'vinaigre', 'coffret', 'sec', 'épicé', 'calvados', 'confiture'
+        ];
+
+        $synonyms = [
+            'traditionnel' => 'artisanal',
+            'pétillant' => 'brut',
+            'luxe' => 'premium',
+            'gastronomie' => 'premium',
+            'gingembre' => 'épicé',
+            'vanille' => 'doux',
+            'miel' => 'doux',
+            'citron' => 'fruité',
+            'poire' => 'fruité',
+            'framboise' => 'fruité',
+            'pêche' => 'fruité',
+            'cadeau' => 'coffret',
+            'hivernal' => 'épicé',
+            'herbes' => 'vinaigre',
+            'gourmet' => 'premium',
+            'confiserie' => 'confiture',
+            'sans-alcool' => 'jus'
+        ];
+
+        // Insère les produits sans la colonne CSV 'tags'
         foreach ($data as $product) {
-            $this->db->table('products')->insert($product);
+            $insert = $product;
+            unset($insert['tags']);
+            $this->db->table('products')->insert($insert);
         }
+
+        foreach ($data as $i => $product) {
+            $raw = isset($product['tags']) ? explode(',', $product['tags']) : [];
+            $normalized = [];
+            foreach ($raw as $t) {
+                $t = trim($t);
+                $base = $synonyms[$t] ?? $t;
+                if (in_array($base, $allowedTags, true)) {
+                    $normalized[] = $base;
+                }
+            }
+            $normalized = array_values(array_unique($normalized));
+            if (count($normalized) > 2) {
+                $limit = (crc32($product['name']) % 3 === 0 && count($normalized) >= 3) ? 3 : 2;
+                $normalized = array_slice($normalized, 0, $limit);
+            }
+            $data[$i]['tags'] = implode(',', $normalized);
+        }
+
+            // Normalise et insère les tags dans les tables tags/product_tags
+            foreach ($data as $product) {
+                $raw = isset($product['tags']) ? explode(',', $product['tags']) : [];
+                $normalized = [];
+                foreach ($raw as $t) {
+                    $t = trim($t);
+                    $base = $synonyms[$t] ?? $t;
+                    if (in_array($base, $allowedTags, true)) {
+                        $normalized[] = $base;
+                    }
+                }
+                $normalized = array_values(array_unique($normalized));
+                if (count($normalized) > 2) {
+                    $limit = (crc32($product['name']) % 3 === 0 && count($normalized) >= 3) ? 3 : 2;
+                    $normalized = array_slice($normalized, 0, $limit);
+                }
+
+                // Récupère l'id du produit inséré
+                $prodRow = $this->db->table('products')->select('id')->where('name', $product['name'])->get()->getRowArray();
+                if (!$prodRow) continue;
+                $productId = $prodRow['id'];
+
+                foreach ($normalized as $tagName) {
+                    $existing = $this->db->table('tags')->where('name', $tagName)->get()->getRowArray();
+                    if (!$existing) {
+                        $this->db->table('tags')->insert(['name' => $tagName]);
+                        $tagId = $this->db->insertID();
+                    } else {
+                        $tagId = $existing['id'];
+                    }
+                    // Lier
+                    $existsLink = $this->db->table('product_tags')->where(['product_id' => $productId, 'tag_id' => $tagId])->countAllResults();
+                    if ($existsLink == 0) {
+                        $this->db->table('product_tags')->insert(['product_id' => $productId, 'tag_id' => $tagId]);
+                    }
+                }
+            }
     }
 }
 

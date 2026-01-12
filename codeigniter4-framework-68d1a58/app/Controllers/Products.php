@@ -87,7 +87,7 @@ class Products extends BaseController
     public function detail($id): string
     {
         $model = new ProductModel();
-        $product = $model->find($id);
+        $product = $model->getProductWithTagsById($id);
         
         if (!$product) {
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();

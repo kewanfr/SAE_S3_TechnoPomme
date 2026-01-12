@@ -84,9 +84,9 @@
                                 </td>
                                 <td>
                                     <?php if ($user['customer_type'] === 'professionnel'): ?>
-                                        <span style="background: linear-gradient(135deg, #ffd700, #ffed4e); color: #8b6914; padding: 4px 8px; border-radius: 8px; font-size: 11px; font-weight: bold; display: inline-flex; align-items: center; gap: 3px;">⭐ PRO</span>
+                                        <span style="background: linear-gradient(135deg, #ffd700, #ffed4e); color: #8b6914; padding: 4px 8px; border-radius: 8px; font-size: 11px; font-weight: bold; display: inline-flex; align-items: center; gap: 3px;">PRO</span>
                                     <?php else: ?>
-                                        <span style="background: #e3f2fd; color: #1976d2; padding: 4px 8px; border-radius: 8px; font-size: 11px; font-weight: bold;">👤 Particulier</span>
+                                        <span style="background: #e3f2fd; color: #1976d2; padding: 4px 8px; border-radius: 8px; font-size: 11px; font-weight: bold;"> Particulier</span>
                                     <?php endif; ?>
                                 </td>
                                 <td>

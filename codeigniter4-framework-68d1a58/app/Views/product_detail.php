@@ -281,7 +281,7 @@
                         <?php endif; ?>
                         
                         <?php if (!empty($product['format'])): ?>
-                            <span class="format-badge">📏 <?= esc($product['format']) ?></span>
+                            <span class="format-badge"><?= esc($product['format']) ?></span>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -326,8 +326,8 @@
                 
                 <?php if (!empty($product['tags'])): ?>
                     <div>
-                        <h3 style="color: #8b4513; margin-bottom: 10px;">🏷️ Tags</h3>
-                        <div class="tags-section">
+                        <h3 style="color: #8b4513; margin-bottom: 10px;">Tags</h3>
+                        <div class="tags-section" style="max-height: 90px; overflow-y: auto;">
                             <?php foreach (explode(',', $product['tags']) as $tag): ?>
                                 <span class="tag"><?= esc(trim($tag)) ?></span>
                             <?php endforeach; ?>
@@ -351,7 +351,7 @@
                         class="add-to-cart-btn"
                         <?= $quantity <= 0 ? 'disabled' : '' ?>
                     >
-                        <?= $quantity > 0 ? '🛒 Ajouter au panier' : 'Indisponible' ?>
+                        <?= $quantity > 0 ? 'Ajouter au panier' : 'Indisponible' ?>
                     </button>
                     <span class="cart-feedback">✓ Ajouté !</span>
                 </div>
@@ -395,7 +395,7 @@
                     }
                     
                     setTimeout(() => {
-                        button.textContent = '🛒 Ajouter au panier';
+                        button.textContent = 'Ajouter au panier';
                         feedback.style.display = 'none';
                     }, 2000);
                 } else {

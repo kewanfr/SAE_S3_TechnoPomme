@@ -19,15 +19,15 @@
         </a>
         
         <?php if (!empty($format)): ?>
-            <span style="font-size: 0.9em; color: #2196f3; font-weight: bold;">📏 <?= esc($format) ?></span>
+            <span style="font-size: 0.9em; color: #2196f3; font-weight: bold;"><?= esc($format) ?></span>
         <?php endif; ?>
         
         <span class='product_desc'><?= esc($desc ?? 'Description du produit') ?></span>
         
         <?php if (!empty($tags)): ?>
-            <div style="margin: 10px 0; display: flex; flex-wrap: wrap; gap: 5px;">
+            <div style="margin: 10px 0; width: 100%; max-width: 100%; display: flex; flex-wrap: nowrap; gap: 5px; height: 32px; overflow-x: auto; overflow-y: hidden; padding: 0; box-sizing: border-box; align-items: center;">
                 <?php foreach (explode(',', $tags) as $tag): ?>
-                    <span class="product-tag"><?= esc(trim($tag)) ?></span>
+                    <span class="product-tag" style="flex-shrink: 0;"><?= esc(trim($tag)) ?></span>
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>

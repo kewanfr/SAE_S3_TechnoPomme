@@ -27,40 +27,16 @@ class FakeProductSeeder extends Seeder
             $categories = ['Cidres', 'Jus', 'Vinaigres', 'Spiritueux', 'Confitures', 'Coffrets'];
         }
         
-        // Récupère tous les tags existants
-        $existingProducts = $this->db->table('products')
-            ->select('tags')
-            ->where('tags IS NOT NULL')
-            ->where('tags !=', '')
-            ->get()
-            ->getResultArray();
-        
-        $allTags = [];
-        foreach ($existingProducts as $product) {
-            if (!empty($product['tags'])) {
-                $tags = explode(',', $product['tags']);
-                foreach ($tags as $tag) {
-                    $tag = trim($tag);
-                    if (!empty($tag) && $tag !== 'fake-article') {
-                        $allTags[] = $tag;
-                    }
-                }
-            }
-        }
-        
-        // Déduplique
-        $allTags = array_unique($allTags);
-        
-        // Fallback si aucun tag
+        // Récupère tous les tags existants (table tags)
+        $existingTags = $this->db->table('tags')->select('name')->get()->getResultArray();
+        $allTags = array_column($existingTags, 'name');
         if (empty($allTags)) {
-            $allTags = ['bio', 'artisanal', 'premium', 'traditionnel', 'fruité', 'sec', 'doux'];
+            $allTags = ['bio', 'artisanal', 'premium', 'fruité', 'sec', 'doux'];
         }
         
         $formats = ['25cl', '33cl', '50cl', '75cl', '1L', '1.5L', '3L'];
         
-        $data = [];
-        
-        // Génère 200 faux articles
+        // Génère et insère 200 faux articles
         for ($i = 1; $i <= 200; $i++) {
             $category = $categories[array_rand($categories)];
             $format = $formats[array_rand($formats)];
@@ -68,16 +44,15 @@ class FakeProductSeeder extends Seeder
             $quantity = mt_rand(0, 200);
             $tvaRate = 20.0;
             
-            // Génère des tags : fake-article + 1 à 3 tags aléatoires
-            $numTags = mt_rand(1, 3);
+            // Génère des tags : fake-article + 0 à 1 tag aléatoire
+            $numTags = mt_rand(0, 1);
             $selectedTags = [];
             for ($j = 0; $j < $numTags; $j++) {
                 $selectedTags[] = $allTags[array_rand($allTags)];
             }
             $selectedTags = array_unique($selectedTags);
-            $tags = 'fake-article,' . implode(',', $selectedTags);
             
-            $data[] = [
+            $productData = [
                 'name' => "Article Test #{$i}",
                 'desc' => "Ceci est un article de test numéro {$i} pour tester le scroll infini et la pagination. Catégorie: {$category}, Format: {$format}.",
                 'img_src' => '/assets/img/missing_product.jpg',
@@ -86,14 +61,30 @@ class FakeProductSeeder extends Seeder
                 'quantity' => $quantity,
                 'format' => $format,
                 'category' => $category,
-                'tags' => $tags,
                 'is_active' => 1
             ];
+
+            // Insère le produit
+            $this->db->table('products')->insert($productData);
+            $productId = $this->db->insertID();
+
+            // Associer tags: toujours 'fake-article' + éventuels sélectionnés
+            $tagNames = array_merge(['fake-article'], $selectedTags);
+            foreach ($tagNames as $tagName) {
+                $existing = $this->db->table('tags')->where('name', $tagName)->get()->getRowArray();
+                if (!$existing) {
+                    $this->db->table('tags')->insert(['name' => $tagName]);
+                    $tagId = $this->db->insertID();
+                } else {
+                    $tagId = $existing['id'];
+                }
+                $existsLink = $this->db->table('product_tags')->where(['product_id' => $productId, 'tag_id' => $tagId])->countAllResults();
+                if ($existsLink == 0) {
+                    $this->db->table('product_tags')->insert(['product_id' => $productId, 'tag_id' => $tagId]);
+                }
+            }
         }
         
-        // Insertion en base
-        $this->db->table('products')->insertBatch($data);
-        
-        echo "200 faux articles créés avec succès !\n";
+        echo "200 faux articles créés avec tags normalisés !\n";
     }
 }

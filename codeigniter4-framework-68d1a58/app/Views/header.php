@@ -95,7 +95,7 @@
                         <span class="username">
                             <?= esc($username) ?>
                             <?php if ($customerType === 'professionnel'): ?>
-                                <span style="font-size: 0.8em; color: #ffd700;">⭐ PRO</span>
+                                <span style="font-size: 0.8em; color: #ffd700;">PRO</span>
                             <?php endif; ?>
                         </span>
                         <?php if ($customerType === 'professionnel' && $companyName): ?>

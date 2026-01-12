@@ -103,7 +103,7 @@
         <label class="delivery-option" onclick="selectDelivery('pickup', 0)">
             <input type="radio" name="delivery_method" value="pickup" checked onchange="updateTotal()">
             <div class="delivery-info">
-                <div class="delivery-name">🏪 Retrait à la cidrerie</div>
+                <div class="delivery-name">Retrait à la cidrerie</div>
                 <div class="delivery-desc">Récupérez votre commande directement sur place</div>
             </div>
             <div class="delivery-price">Gratuit</div>
@@ -121,7 +121,7 @@
         <label class="delivery-option" onclick="selectDelivery('carrier_delivery', 15)">
             <input type="radio" name="delivery_method" value="carrier_delivery" onchange="updateTotal()">
             <div class="delivery-info">
-                <div class="delivery-name">📦 Livraison transporteur</div>
+                <div class="delivery-name">Livraison transporteur</div>
                 <div class="delivery-desc">Livraison partout en France (délai : 2-3 jours)</div>
             </div>
             <div class="delivery-price">15,00 €</div>

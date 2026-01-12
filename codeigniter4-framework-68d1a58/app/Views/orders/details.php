@@ -168,11 +168,6 @@
                 <span class="info-label">Mode de livraison:</span>
                 <span>
                     <?php
-                    $deliveryIcons = [
-                        'pickup' => '🏪',
-                        'local_delivery' => '🚗',
-                        'carrier_delivery' => '📦'
-                    ];
                     $deliveryNames = [
                         'pickup' => 'Retrait à la cidrerie',
                         'local_delivery' => 'Livraison locale',
@@ -180,7 +175,7 @@
                     ];
                     $deliveryMethod = $order['delivery_method'] ?? 'pickup';
                     ?>
-                    <?= $deliveryIcons[$deliveryMethod] ?? '🏪' ?> <?= $deliveryNames[$deliveryMethod] ?? 'Retrait à la cidrerie' ?>
+                    <?= $deliveryNames[$deliveryMethod] ?? 'Retrait à la cidrerie' ?>
                 </span>
             </div>
             <div class="info-row">

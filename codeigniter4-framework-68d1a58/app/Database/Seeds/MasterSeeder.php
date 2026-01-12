@@ -18,5 +18,11 @@ class MasterSeeder extends Seeder
         
         // Commandes
         $this->call(OrderSeeder::class);
+        
+        // Fake produits pour tester
+        $this->call(FakeProductSeeder::class);
+        
+        // Historiques mouvements de stock
+        $this->call(StockMovementSeeder::class);
     }
 }

@@ -68,6 +68,8 @@
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
+            overflow-x: auto;
+            padding-bottom: 10px;
         }
         
         .filter-group {
@@ -203,6 +205,7 @@
             font-size: 0.75em;
             margin: 2px;
             border: 1px solid #d2691e;
+            white-space: nowrap;
         }
         
         .price-qtt-container {
@@ -252,7 +255,7 @@
     <?= view('header') ?>
     
     <div class="page-title">
-        <h1>📦 Notre Catalogue de Produits</h1>
+        <h1>Notre Catalogue de Produits</h1>
     </div>
     
     <div class="search-filters">
@@ -283,7 +286,13 @@
                 <label>Tags:</label>
                 <?php if (!empty($tags)): ?>
                     <?php foreach ($tags as $t): ?>
-                        <a href="/products?tag=<?= urlencode($t) ?>&search=<?= urlencode($currentSearch ?? '') ?>&category=<?= urlencode($currentCategory ?? '') ?>&min_price=<?= urlencode($currentMinPrice ?? '') ?>&max_price=<?= urlencode($currentMaxPrice ?? '') ?>" class="filter-btn <?= ($currentTag ?? '') === $t ? 'active' : '' ?>">
+                        <?php 
+                            $isActive = ($currentTag ?? '') === $t;
+                            $href = $isActive 
+                                ? "/products?search=" . urlencode($currentSearch ?? '') . "&category=" . urlencode($currentCategory ?? '') . "&min_price=" . urlencode($currentMinPrice ?? '') . "&max_price=" . urlencode($currentMaxPrice ?? '')
+                                : "/products?tag=" . urlencode($t) . "&search=" . urlencode($currentSearch ?? '') . "&category=" . urlencode($currentCategory ?? '') . "&min_price=" . urlencode($currentMinPrice ?? '') . "&max_price=" . urlencode($currentMaxPrice ?? '');
+                        ?>
+                        <a href="<?= $href ?>" class="filter-btn <?= $isActive ? 'active' : '' ?>">
                             <?= esc($t) ?>
                         </a>
                     <?php endforeach; ?>
@@ -293,7 +302,7 @@
             <br />
             
             <form method="GET" action="/products" class="price-filter">
-                <label style="font-weight: bold; color: #8b4513;">💰 Prix:</label>
+                <label style="font-weight: bold; color: #8b4513;">Prix:</label>
                 <input type="number" name="min_price" placeholder="Min" step="0.01" value="<?= esc($currentMinPrice ?? '') ?>">
                 <span style="color: #8b4513;">-</span>
                 <input type="number" name="max_price" placeholder="Max" step="0.01" value="<?= esc($currentMaxPrice ?? '') ?>">
