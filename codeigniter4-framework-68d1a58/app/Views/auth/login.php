@@ -34,13 +34,13 @@ namespace CodeIgniter\Views\auth;
     <?php endif ?>
 
     <form action="/auth/login" method="post">
-        <label for="email">Email ou nom d'utilisateur:</label><br>
+        <label for="email">Email ou nom d'utilisateur :</label><br>
         <input id="email" type="text" name="email" class="textfield" autocomplete="username" placeholder="Email ou nom d'utilisateur"><br>
 
-        <label for="password">Mot de passe:</label><br>
+        <label for="password">Mot de passe :</label><br>
         <input id="password" type="password" name="password" class="textfield"><br>
 
-        <a href="" class="forgot-password">Mot de passe oublié?</a><br>
+        <a href="" class="forgot-password">Mot de passe oublié ?</a><br>
 
         <div class="remember">
         <input id="remember" type="checkbox" name="remember">
@@ -52,7 +52,7 @@ namespace CodeIgniter\Views\auth;
 
     <div class="separator color-primary"></div>
 
-    <span>Pas de compte? <a href="/register">S'inscrire</a></span>
+    <span>Pas de compte ? <a href="/register">S'inscrire</a></span>
 </div>
 </body>
 </html>
