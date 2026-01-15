@@ -177,6 +177,128 @@ class ProductModel extends Model
             ->findAll();
     }
 
+    /**
+     * Récupère les produits filtrés par une liste de catégories (pour mineurs)
+     */
+    public function getProductsByCategories(array $categories, ?int $limit = null, int $offset = 0)
+    {
+        $builder = $this->builder();
+        $builder->select('products.*, GROUP_CONCAT(tags.name) AS tags')
+            ->join('product_tags', 'product_tags.product_id = products.id', 'left')
+            ->join('tags', 'tags.id = product_tags.tag_id', 'left')
+            ->whereIn('products.category', $categories)
+            ->where('is_active', 1)
+            ->groupBy('products.id');
+
+        if ($limit !== null) {
+            $builder->limit($limit, $offset);
+        }
+        return $builder->get()->getResultArray();
+    }
+
+    /**
+     * Compte les produits par catégories
+     */
+    public function countByCategories(array $categories): int
+    {
+        return $this->whereIn('category', $categories)
+                    ->where('is_active', 1)
+                    ->countAllResults();
+    }
+
+    /**
+     * Recherche et filtre limité à certaines catégories
+     */
+    public function searchAndFilterByCategories($search = null, array $categories = [], $tag = null, $minPrice = null, $maxPrice = null, ?int $limit = null, int $offset = 0)
+    {
+        $builder = $this->builder();
+        $builder->select('products.*, GROUP_CONCAT(tags.name) AS tags')
+            ->join('product_tags', 'product_tags.product_id = products.id', 'left')
+            ->join('tags', 'tags.id = product_tags.tag_id', 'left');
+
+        // Filtre par catégories autorisées
+        if (!empty($categories)) {
+            $builder->whereIn('products.category', $categories);
+        }
+
+        if ($search) {
+            $builder->groupStart()
+                ->like('products.name', $search)
+                ->orLike('products.desc', $search)
+                ->groupEnd();
+        }
+
+        if ($tag) {
+            $builder->where('tags.name', $tag);
+        }
+
+        if ($minPrice !== null && $minPrice !== '') {
+            $builder->where('products.price >=', (float)$minPrice);
+        }
+
+        if ($maxPrice !== null && $maxPrice !== '') {
+            $builder->where('products.price <=', (float)$maxPrice);
+        }
+
+        $builder->where('products.is_active', 1)
+                ->groupBy('products.id');
+
+        if ($limit !== null) {
+            $builder->limit($limit, $offset);
+        }
+
+        return $builder->get()->getResultArray();
+    }
+
+    /**
+     * Compte les résultats filtrés par catégories
+     */
+    public function countFilteredByCategories($search = null, array $categories = [], $tag = null, $minPrice = null, $maxPrice = null): int
+    {
+        $builder = $this->builder();
+        $builder->select('products.id')
+            ->join('product_tags', 'product_tags.product_id = products.id', 'left')
+            ->join('tags', 'tags.id = product_tags.tag_id', 'left');
+
+        // Filtre par catégories autorisées
+        if (!empty($categories)) {
+            $builder->whereIn('products.category', $categories);
+        }
+
+        if ($search) {
+            $builder->groupStart()
+                ->like('products.name', $search)
+                ->orLike('products.desc', $search)
+                ->groupEnd();
+        }
+
+        if ($tag) {
+            $builder->where('tags.name', $tag);
+        }
+
+        if ($minPrice !== null && $minPrice !== '') {
+            $builder->where('products.price >=', (float)$minPrice);
+        }
+
+        if ($maxPrice !== null && $maxPrice !== '') {
+            $builder->where('products.price <=', (float)$maxPrice);
+        }
+
+        $builder->where('products.is_active', 1)
+                ->groupBy('products.id');
+
+        return $builder->get()->getNumRows();
+    }
+
+    // Récupère toutes les catégories
+    // public function getCategories()
+    // {
+    //     return $this->select('category')
+    //         ->distinct()
+    //         ->where('category IS NOT NULL AND category != ""')
+    //         ->findAll();
+    // }
+
     // Récupère tous les tags avec plus de 2 articles
     public function getAllTags()
     {

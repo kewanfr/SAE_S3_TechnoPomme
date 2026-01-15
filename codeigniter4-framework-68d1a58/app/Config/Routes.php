@@ -25,6 +25,10 @@ $routes->get('/cookies/decline', 'Cookies::decline');
 $routes->get('/contact', 'Contact::index');
 $routes->post('/contact/send', 'Contact::send');
 
+// === Vérification d'âge ===
+$routes->post('/age-verification/set-age', 'AgeVerification::setAge');
+$routes->get('/age-verification/reset', 'AgeVerification::reset'); // Pour les tests
+
 // === Produits ===
 $routes->get('/products', 'Products::index'); // Page catalogue publique
 $routes->get('/products/load-more', 'Products::loadMore'); // API pour scroll infini

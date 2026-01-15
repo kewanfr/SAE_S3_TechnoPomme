@@ -262,7 +262,9 @@
         <form class="search-bar" method="GET" action="/products">
             <input type="text" name="search" placeholder="Rechercher un produit..." value="<?= esc($currentSearch ?? '') ?>">
             <!-- Préserve les autres filtres -->
-            <input type="hidden" name="category" value="<?= esc($currentCategory ?? '') ?>">
+            <?php if (!($isUnder18 ?? false)): ?>
+                <input type="hidden" name="category" value="<?= esc($currentCategory ?? '') ?>">
+            <?php endif; ?>
             <input type="hidden" name="tag" value="<?= esc($currentTag ?? '') ?>">
             <input type="hidden" name="min_price" value="<?= esc($currentMinPrice ?? '') ?>">
             <input type="hidden" name="max_price" value="<?= esc($currentMaxPrice ?? '') ?>">
@@ -270,17 +272,34 @@
         </form>
         
         <div class="filters">
-            <div class="filter-group">
-                <label>Catégories:</label>
-                <a href="/products" class="filter-btn <?= empty($currentCategory) ? 'active' : '' ?>">Toutes</a>
-                <?php if (!empty($categories)): ?>
-                    <?php foreach ($categories as $cat): ?>
-                        <a href="/products?category=<?= urlencode($cat['category']) ?>&search=<?= urlencode($currentSearch ?? '') ?>&tag=<?= urlencode($currentTag ?? '') ?>&min_price=<?= urlencode($currentMinPrice ?? '') ?>&max_price=<?= urlencode($currentMaxPrice ?? '') ?>" class="filter-btn <?= ($currentCategory ?? '') === $cat['category'] ? 'active' : '' ?>">
-                            <?= ucfirst(esc($cat['category'])) ?>
+            <?php if (!($isUnder18 ?? false)): ?>
+                <!-- Filtre catégories complet pour les adultes -->
+                <div class="filter-group">
+                    <label>Catégories:</label>
+                    <a href="/products" class="filter-btn <?= empty($currentCategory) ? 'active' : '' ?>">Toutes</a>
+                    <?php if (!empty($categories)): ?>
+                        <?php foreach ($categories as $cat): ?>
+                            <a href="/products?category=<?= urlencode($cat['category']) ?>&search=<?= urlencode($currentSearch ?? '') ?>&tag=<?= urlencode($currentTag ?? '') ?>&min_price=<?= urlencode($currentMinPrice ?? '') ?>&max_price=<?= urlencode($currentMaxPrice ?? '') ?>" class="filter-btn <?= ($currentCategory ?? '') === $cat['category'] ? 'active' : '' ?>">
+                                <?= ucfirst(esc($cat['category'])) ?>
+                            </a>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div> <br />
+            <?php else: ?>
+                <!-- Filtre catégories limité pour les mineurs -->
+                <div class="filter-group">
+                    <label>Catégories (sans alcool):</label>
+                    <?php 
+                    $nonAlcoolCategories = ['Jus', 'Vinaigres', 'Confitures', 'Coffrets'];
+                    ?>
+                    <a href="/products" class="filter-btn <?= empty($currentCategory) ? 'active' : '' ?>">Toutes</a>
+                    <?php foreach ($nonAlcoolCategories as $cat): ?>
+                        <a href="/products?category=<?= urlencode($cat) ?>&search=<?= urlencode($currentSearch ?? '') ?>&tag=<?= urlencode($currentTag ?? '') ?>&min_price=<?= urlencode($currentMinPrice ?? '') ?>&max_price=<?= urlencode($currentMaxPrice ?? '') ?>" class="filter-btn <?= ($currentCategory ?? '') === $cat ? 'active' : '' ?>">
+                            <?= esc($cat) ?>
                         </a>
                     <?php endforeach; ?>
-                <?php endif; ?>
-            </div> <br />
+                </div> <br />
+            <?php endif; ?>
             
             <div class="filter-group">
                 <label>Tags:</label>

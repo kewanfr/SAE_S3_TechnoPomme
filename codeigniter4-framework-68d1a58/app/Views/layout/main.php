@@ -18,69 +18,6 @@
             background-attachment: fixed;
         }
         
-        .age-modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.95);
-            backdrop-filter: blur(8px);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .age-modal-content {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            max-width: 500px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-        }
-
-        .age-modal h2 {
-            color: #8b4513;
-            margin-bottom: 20px;
-        }
-
-        .age-modal p {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 1.1em;
-        }
-
-        .age-modal button {
-            margin: 10px;
-            padding: 15px 40px;
-            font-size: 1.1em;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-
-        .age-modal .btn-yes {
-            background: #c41e3a;
-            color: white;
-        }
-
-        .age-modal .btn-yes:hover {
-            background: #a01829;
-        }
-
-        .age-modal .btn-no {
-            background: #8bc34a;
-            color: white;
-        }
-
-        .age-modal .btn-no:hover {
-            background: #7cb342;
-        }
-
         .search-filters {
             background: rgba(255,255,255,0.9);
             padding: 25px;
@@ -266,19 +203,6 @@
     </style>
 </head>
 <body>
-    <!-- Modal vérification d'âge -->
-    <div id="ageModal" class="age-modal">
-        <div class="age-modal-content">
-            <h2>🍎 Bienvenue chez TechnoPomme</h2>
-            <p>Avez-vous plus de 18 ans ?</p>
-            <p style="font-size: 0.9em; color: #999;">Notre site contient des produits alcoolisés.</p>
-            <div>
-                <button class="btn-yes" onclick="confirmAge(true)">Oui, j'ai 18 ans ou plus</button>
-                <button class="btn-no" onclick="confirmAge(false)">Non, j'ai moins de 18 ans</button>
-            </div>
-        </div>
-    </div>
-
     <?= view('header') ?>
     <?= view('cookies') ?>
     
@@ -347,45 +271,5 @@
             <?php endforeach; ?>
         </div>
     </div>
-
-    <script>
-        // Vérification d'âge au chargement
-        window.addEventListener('DOMContentLoaded', function() {
-            const ageVerified = sessionStorage.getItem('ageVerified');
-            if (!ageVerified) {
-                document.getElementById('ageModal').style.display = 'flex';
-            } else if (ageVerified === 'under18') {
-                filterAlcoolProducts();
-            }
-        });
-
-        function confirmAge(isAdult) {
-            if (isAdult) {
-                sessionStorage.setItem('ageVerified', 'adult');
-                document.getElementById('ageModal').style.display = 'none';
-            } else {
-                sessionStorage.setItem('ageVerified', 'under18');
-                document.getElementById('ageModal').style.display = 'none';
-                filterAlcoolProducts();
-            }
-        }
-
-        function filterAlcoolProducts() {
-            // Catégories sans alcool
-            const nonAlcoolCategories = ['Jus', 'Vinaigres', 'Confitures', 'Coffrets'];
-
-            // Masquer tous les produits avec alcool
-            const allProducts = document.querySelectorAll('.product-container');
-            allProducts.forEach(product => {
-                const categoryTag = product.querySelector('.category-tag');
-                if (categoryTag) {
-                    const category = categoryTag.textContent.trim();
-                    if (!nonAlcoolCategories.includes(category)) {
-                        product.style.display = 'none';
-                    }
-                }
-            });
-        }
-    </script>
 </body>
 </html>

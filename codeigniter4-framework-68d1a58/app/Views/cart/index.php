@@ -165,9 +165,12 @@
                             <div class="quantity-controls">
                                 <form method="post" action="/cart/update">
                                     <input type="hidden" name="product_id" value="<?= $item['product_id'] ?>">
-                                    <input type="number" name="quantity" value="<?= $item['quantity'] ?>" min="1">
+                                    <input type="number" name="quantity" value="<?= $item['quantity'] ?>" min="1" max="<?= $item['stock_quantity'] ?>" title="Stock disponible: <?= $item['stock_quantity'] ?>">
                                     <button type="submit" class="update-qty-btn">Mettre à jour</button>
                                 </form>
+                                <div style="font-size: 12px; color: <?= $item['stock_quantity'] < 5 ? '#dc3545' : '#666' ?>; margin-top: 5px;">
+                                    Stock disponible: <?= $item['stock_quantity'] ?> unité(s)
+                                </div>
                                 <?php 
                                 $subtotalTTC = $priceTTC * $item['quantity'];
                                 $subtotalHT = $priceHT * $item['quantity'];
@@ -214,5 +217,46 @@
             </div>
         <?php endif; ?>
     </div>
+
+    <script>
+        // Validation du stock avant soumission
+        document.querySelectorAll('.quantity-controls form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                const input = this.querySelector('input[name="quantity"]');
+                const quantity = parseInt(input.value);
+                const maxStock = parseInt(input.max);
+                
+                if (quantity > maxStock) {
+                    e.preventDefault();
+                    alert(`Stock insuffisant ! Maximum disponible : ${maxStock} unité(s)`);
+                    input.value = maxStock;
+                    return false;
+                }
+                
+                if (quantity < 1) {
+                    e.preventDefault();
+                    alert('La quantité doit être au moins 1');
+                    input.value = 1;
+                    return false;
+                }
+            });
+        });
+        
+        // Empêcher de dépasser le max lors de la saisie
+        document.querySelectorAll('input[name="quantity"]').forEach(input => {
+            input.addEventListener('input', function() {
+                const max = parseInt(this.max);
+                const value = parseInt(this.value);
+                
+                if (value > max) {
+                    this.value = max;
+                }
+                
+                if (value < 1) {
+                    this.value = 1;
+                }
+            });
+        });
+    </script>
 </body>
 </html>

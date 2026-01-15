@@ -323,8 +323,12 @@ class AdminController extends Controller
 
         // Sinon, mise à jour normale du statut
         $newStatus = $this->request->getPost('status');
+        
+        // Les admins peuvent forcer les transitions pour corriger des erreurs
+        $userRoles = session()->get('user_roles') ?? [];
+        $isAdmin = in_array('admin', $userRoles);
 
-        if ($this->orderModel->changeStatus($id, $newStatus)) {
+        if ($this->orderModel->changeStatus($id, $newStatus, $isAdmin)) {
             return redirect()->to('/admin/orders/' . $id)->with('success', 'Statut mis à jour');
         }
 

@@ -173,21 +173,22 @@
                 $isCommercial = in_array('commercial', $userRoles);
                 $isPreparation = in_array('preparation', $userRoles);
                 $isProduction = in_array('production', $userRoles);
+                $isSaisonnier = in_array('saisonnier', $userRoles);
                 
-                // Utilise les transitions valides de l'enum
-                $nextStatuses = $currentStatus->nextPossibleStatuses();
-                
-                // Filtre selon le rôle (sauf admin qui peut tout)
-                if (!$isAdmin) {
-                    $nextStatuses = array_filter($nextStatuses, function($status) use ($isCommercial, $isPreparation, $isProduction) {
-                        // Commercial : peut lancer la préparation
-                        if ($isCommercial && $status === OrderStatus::EN_PREPARATION) return true;
-                        // Préparation : peut marquer prête
-                        if ($isPreparation && $status === OrderStatus::PRETE) return true;
-                        // Production : peut expédier et marquer livrée
-                        if ($isProduction && in_array($status, [OrderStatus::EXPEDIEE, OrderStatus::LIVREE])) return true;
-                        return false;
-                    });
+                // Admin peut forcer n'importe quel statut (pour corriger les erreurs)
+                // Les autres utilisent les transitions valides du pattern State
+                if ($isAdmin) {
+                    $nextStatuses = OrderStatus::cases();
+                } else {
+                    $nextStatuses = $currentStatus->nextPossibleStatuses();
+                    
+                    // Filtrage basé sur les rôles : on exclut seulement ce qui n'est pas permis
+                    // Par défaut, les utilisateurs authentifiés peuvent voir les transitions standard
+                    // mais on peut restreindre certains statuts sensibles
+                    
+                    // Tous les rôles (commercial, preparation, production, saisonnier) peuvent
+                    // faire progresser les commandes selon les transitions valides du pattern State
+                    // Pas besoin de filtrer davantage car le pattern State gère déjà les transitions
                 }
                 
                 // Exclure ANNULEE des transitions normales (bouton séparé)

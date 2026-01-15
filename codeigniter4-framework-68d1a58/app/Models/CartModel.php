@@ -105,6 +105,14 @@ class CartModel extends Model
             return $this->removeItem($cartId, $productId);
         }
         
+        // Vérifier le stock disponible
+        $productModel = new \App\Models\ProductModel();
+        $product = $productModel->getProductById($productId);
+        
+        if (!$product || $quantity > $product['quantity']) {
+            return false;
+        }
+        
         $db = \Config\Database::connect();
         return $db->table('cart_items')->where([
             'cart_id' => $cartId,
@@ -119,7 +127,7 @@ class CartModel extends Model
         $builder = $db->table('cart_items');
         
         return $builder
-            ->select('cart_items.*, products.name, products.desc, products.img_src, products.price')
+            ->select('cart_items.*, products.name, products.desc, products.img_src, products.price, products.quantity as stock_quantity')
             ->join('products', 'products.id = cart_items.product_id')
             ->where('cart_items.cart_id', $cartId)
             ->get()

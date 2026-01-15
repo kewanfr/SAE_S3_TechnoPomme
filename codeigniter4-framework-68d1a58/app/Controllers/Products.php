@@ -22,13 +22,39 @@ class Products extends BaseController
         $minPrice = $this->request->getGet('min_price');
         $maxPrice = $this->request->getGet('max_price');
         
-        // Premier chargement: 20 produits
-        if ($search || $category || $tag || $minPrice || $maxPrice) {
-            $products = $model->searchAndFilter($search, $category, $tag, $minPrice, $maxPrice, self::PRODUCTS_PER_PAGE, 0);
-            $total = $model->countFiltered($search, $category, $tag, $minPrice, $maxPrice);
+        // Vérifie le statut de vérification d'âge
+        $ageStatus = AgeVerification::getAgeStatus();
+        $isUnder18 = AgeVerification::isUnder18();
+        
+        // Si l'utilisateur a moins de 18 ans, forcer le filtre sur catégories non-alcoolisées
+        if ($isUnder18) {
+            $nonAlcoolCategories = ['Jus', 'Vinaigres', 'Confitures', 'Coffrets'];
+            
+            // Si une catégorie est déjà sélectionnée et qu'elle n'est pas dans la liste autorisée
+            if ($category && !in_array($category, $nonAlcoolCategories)) {
+                $category = null; // Reset la catégorie invalide
+            }
+            
+            // Filtrer uniquement les catégories non-alcoolisées
+            if ($search || $tag || $minPrice || $maxPrice) {
+                $products = $model->searchAndFilterByCategories($search, $nonAlcoolCategories, $tag, $minPrice, $maxPrice, self::PRODUCTS_PER_PAGE, 0);
+                $total = $model->countFilteredByCategories($search, $nonAlcoolCategories, $tag, $minPrice, $maxPrice);
+            } else if ($category) {
+                $products = $model->searchAndFilter($search, $category, $tag, $minPrice, $maxPrice, self::PRODUCTS_PER_PAGE, 0);
+                $total = $model->countFiltered($search, $category, $tag, $minPrice, $maxPrice);
+            } else {
+                $products = $model->getProductsByCategories($nonAlcoolCategories, self::PRODUCTS_PER_PAGE, 0);
+                $total = $model->countByCategories($nonAlcoolCategories);
+            }
         } else {
-            $products = $model->getAllActiveProducts(self::PRODUCTS_PER_PAGE, 0);
-            $total = $model->countActiveProducts();
+            // Premier chargement normal: 20 produits
+            if ($search || $category || $tag || $minPrice || $maxPrice) {
+                $products = $model->searchAndFilter($search, $category, $tag, $minPrice, $maxPrice, self::PRODUCTS_PER_PAGE, 0);
+                $total = $model->countFiltered($search, $category, $tag, $minPrice, $maxPrice);
+            } else {
+                $products = $model->getAllActiveProducts(self::PRODUCTS_PER_PAGE, 0);
+                $total = $model->countActiveProducts();
+            }
         }
         
         $data = [
@@ -41,7 +67,9 @@ class Products extends BaseController
             "currentMinPrice" => $minPrice,
             "currentMaxPrice" => $maxPrice,
             "totalProducts" => $total,
-            "perPage" => self::PRODUCTS_PER_PAGE
+            "perPage" => self::PRODUCTS_PER_PAGE,
+            "ageStatus" => $ageStatus,
+            "isUnder18" => $isUnder18
         ];
 
         return view('products_page', $data);
@@ -61,12 +89,31 @@ class Products extends BaseController
         $minPrice = $this->request->getGet('min_price');
         $maxPrice = $this->request->getGet('max_price');
         
-        if ($search || $category || $tag || $minPrice || $maxPrice) {
-            $products = $model->searchAndFilter($search, $category, $tag, $minPrice, $maxPrice, self::PRODUCTS_PER_PAGE, $offset);
-            $total = $model->countFiltered($search, $category, $tag, $minPrice, $maxPrice);
+        // Vérifie le statut de vérification d'âge
+        $isUnder18 = AgeVerification::isUnder18();
+        
+        // Si l'utilisateur a moins de 18 ans, filtrer les produits
+        if ($isUnder18) {
+            $nonAlcoolCategories = ['Jus', 'Vinaigres', 'Confitures', 'Coffrets'];
+            
+            if ($search || $tag || $minPrice || $maxPrice) {
+                $products = $model->searchAndFilterByCategories($search, $nonAlcoolCategories, $tag, $minPrice, $maxPrice, self::PRODUCTS_PER_PAGE, $offset);
+                $total = $model->countFilteredByCategories($search, $nonAlcoolCategories, $tag, $minPrice, $maxPrice);
+            } else if ($category && in_array($category, $nonAlcoolCategories)) {
+                $products = $model->searchAndFilter($search, $category, $tag, $minPrice, $maxPrice, self::PRODUCTS_PER_PAGE, $offset);
+                $total = $model->countFiltered($search, $category, $tag, $minPrice, $maxPrice);
+            } else {
+                $products = $model->getProductsByCategories($nonAlcoolCategories, self::PRODUCTS_PER_PAGE, $offset);
+                $total = $model->countByCategories($nonAlcoolCategories);
+            }
         } else {
-            $products = $model->getAllActiveProducts(self::PRODUCTS_PER_PAGE, $offset);
-            $total = $model->countActiveProducts();
+            if ($search || $category || $tag || $minPrice || $maxPrice) {
+                $products = $model->searchAndFilter($search, $category, $tag, $minPrice, $maxPrice, self::PRODUCTS_PER_PAGE, $offset);
+                $total = $model->countFiltered($search, $category, $tag, $minPrice, $maxPrice);
+            } else {
+                $products = $model->getAllActiveProducts(self::PRODUCTS_PER_PAGE, $offset);
+                $total = $model->countActiveProducts();
+            }
         }
         
         // Génère le HTML pour chaque produit

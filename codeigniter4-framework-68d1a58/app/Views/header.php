@@ -249,3 +249,5 @@ function updateCartCount() {
 }
 </script>
 
+<!-- Inclure la vérification d'âge sur toutes les pages -->
+<?= view('components/age_verification') ?>

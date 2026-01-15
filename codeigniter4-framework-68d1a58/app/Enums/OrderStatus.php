@@ -35,16 +35,6 @@ enum OrderStatus: string
     }
 
     /**
-     * Retourne l'objet State correspondant à ce statut
-     * 
-     * Cette méthode crée un lien entre l'enum et le pattern State.
-     */
-    private function getState(): OrderStateInterface
-    {
-        return OrderStateFactory::createFromCode($this->value);
-    }
-
-    /**
      * Label humain pour l'affichage
      * 
      * Délègue au pattern State.

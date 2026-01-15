@@ -143,7 +143,7 @@ class OrderModel extends Model
     }
 
     // Change le statut
-    public function changeStatus(int $orderId, OrderStatus|string $newStatus): bool
+    public function changeStatus(int $orderId, OrderStatus|string $newStatus, bool $forceTransition = false): bool
     {
         // Convertir string en enum si nécessaire
         $statusEnum = $newStatus instanceof OrderStatus 
@@ -154,13 +154,22 @@ class OrderModel extends Model
             return false;
         }
 
-        // Vérifier la transition (optionnel: vérifier depuis le statut actuel)
-        $order = $this->find($orderId);
-        if ($order) {
-            $currentStatus = OrderStatus::fromString($order['status']);
-            if (!$currentStatus->canTransitionTo($statusEnum)) {
-                log_message('warning', "Transition invalide: {$currentStatus->value} -> {$statusEnum->value}");
-                // On permet quand même pour l'admin, mais on log
+        // Vérifier la transition sauf si on force (admin)
+        if (!$forceTransition) {
+            $order = $this->find($orderId);
+            if ($order) {
+                $currentStatus = OrderStatus::fromString($order['status']);
+                if (!$currentStatus->canTransitionTo($statusEnum)) {
+                    log_message('warning', "Invalid transition blocked: {$currentStatus->value} -> {$statusEnum->value} for order #{$orderId}");
+                    return false;
+                }
+            }
+        } else {
+            // Transition forcée (admin) - on log pour traçabilité
+            $order = $this->find($orderId);
+            if ($order) {
+                $currentStatus = OrderStatus::fromString($order['status']);
+                log_message('info', "Forced status change by admin: {$currentStatus->value} -> {$statusEnum->value} for order #{$orderId}");
             }
         }
 

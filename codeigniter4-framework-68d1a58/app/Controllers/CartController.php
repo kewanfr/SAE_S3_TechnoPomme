@@ -146,10 +146,22 @@ class CartController extends Controller
         }
 
         $productId = $this->request->getPost('product_id');
-        $quantity = $this->request->getPost('quantity');
+        $quantity = (int) $this->request->getPost('quantity');
 
         if (!$productId || $quantity < 0) {
             return redirect()->back()->with('error', 'Données invalides');
+        }
+
+        // Vérifier le stock disponible
+        $productModel = new \App\Models\ProductModel();
+        $product = $productModel->getProductById($productId);
+        
+        if (!$product) {
+            return redirect()->back()->with('error', 'Produit introuvable');
+        }
+        
+        if ($quantity > $product['quantity']) {
+            return redirect()->back()->with('error', "Stock insuffisant. Seulement {$product['quantity']} unité(s) disponible(s)");
         }
 
         $userId = auth()->id();
