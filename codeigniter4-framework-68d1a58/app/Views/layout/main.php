@@ -246,7 +246,7 @@
         <h2 style="color: #c41e3a; font-size: 2em; margin-bottom: 30px; text-align: center; align-items:center;">Nos Produits Phares</h2>
         <div class="products-container" style="margin-bottom: 30px;">
             <?php 
-            $featuredProducts = array_slice($products, 0, 3); 
+            $featuredProducts = array_slice($products, 0, 5); 
             foreach ($featuredProducts as $product): 
             ?>
                 <?= view("products", $product); ?>
