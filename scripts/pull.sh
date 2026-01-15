@@ -1,1 +1,0 @@
-podman cp php:/var/www/html/codeigniter4-framework-68d1a58/. codeigniter4-framework-68d1a58/

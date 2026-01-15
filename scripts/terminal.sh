@@ -1,1 +1,0 @@
-podman exec -it php /bin/bash
