@@ -76,5 +76,7 @@
             <?php endforeach; ?>
         </div>
     </div>
+
+    <?= view('footer') ?>
 </body>
 </html>

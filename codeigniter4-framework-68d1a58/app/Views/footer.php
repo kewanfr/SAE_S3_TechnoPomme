@@ -99,6 +99,18 @@
 </footer>
 
 <style>
+    /* Sticky footer - moins intrusif */
+    html {
+        overflow-x: hidden; /* Évite l'espace horizontal */
+    }
+    
+    body {
+        display: flex !important;
+        flex-direction: column !important;
+        min-height: 100vh !important;
+        /* Garde le padding-top existant pour le header fixe */
+    }
+    
     .site-footer {
         background: linear-gradient(135deg, #12372a 0%, #436850 100%);
         color: #fff9e9;
