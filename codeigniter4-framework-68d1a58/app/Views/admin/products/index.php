@@ -1,16 +1,5 @@
 <?= view('admin/header') ?>
 
-<style>
-    .product-img { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; display: block; }
-    .actions { display: flex; gap: 5px; align-items: center; flex-wrap: wrap; }
-    .alert { padding: 15px; margin-bottom: 20px; border-radius: 4px; }
-    .alert-success { background: #d4edda; color: #155724; }
-    .header-actions { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-    table td { vertical-align: middle !important; }
-    table td:first-child { text-align: center; }
-    .actions .btn { white-space: nowrap; }
-</style>
-
 <div class="header-actions">
     <h2 class="admin-title">Gestion des Produits</h2>
     <a href="/product/add" class="btn btn-success">+ Ajouter</a>
