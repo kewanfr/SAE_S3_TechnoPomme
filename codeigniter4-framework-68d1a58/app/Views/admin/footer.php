@@ -1,329 +1,328 @@
+</div>
+
+<footer class="admin-footer">
+    <div class="footer-container">
+        <!-- Logo et description -->
+        <div class="footer-section footer-brand">
+            <div class="footer-logo">
+                <img src="/assets/img/logo.png" alt="TechnoPomme" class="footer-logo-img">
+                <span class="footer-logo-text">TechnoPomme</span>
+            </div>
+            <p class="footer-description">
+                Cidrerie de tradition bretonne. Vente directe de la production de notre verger.
+            </p>
+            <div class="footer-social">
+                <a href="#" class="social-link" title="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-link" title="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                    </svg>
+                </a>
+                <a href="#" class="social-link" title="Twitter">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Liens rapides -->
+        <div class="footer-section">
+            <h4 class="footer-title">
+                <span class="footer-icon">🍎</span> Navigation
+            </h4>
+            <ul class="footer-links">
+                <li><a href="/">Accueil</a></li>
+                <li><a href="/products">Nos produits</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/orders">Mes commandes</a></li>
+            </ul>
+        </div>
+
+        <!-- Administration -->
+        <div class="footer-section">
+            <h4 class="footer-title">
+                <span class="footer-icon">⚙️</span> Administration
+            </h4>
+            <ul class="footer-links">
+                <li><a href="/admin">Tableau de bord</a></li>
+                <li><a href="/admin/products">Gestion produits</a></li>
+                <li><a href="/admin/orders">Gestion commandes</a></li>
+                <li><a href="/admin/users">Gestion utilisateurs</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-section">
+            <h4 class="footer-title">
+                <span class="footer-icon">📍</span> Contact
+            </h4>
+            <div class="footer-contact">
+                <p>
+                    <strong>Cidrerie TechnoPomme</strong><br>
+                    Kermabo, 56520 Guidel<br>
+                    Morbihan, Bretagne
+                </p>
+                <p>
+                    <span class="contact-icon">📞</span> 02 97 65 94 38<br>
+                    <span class="contact-icon">✉️</span> contact@technopomme.fr
+                </p>
+                <p class="footer-hours">
+                    <strong>Horaires :</strong><br>
+                    Semaine : 10h-12h 15h-18h<br>
+                    Jeudi et Dimanche : fermé
+                </p>
+            </div>
+        </div>
     </div>
-    
-    <footer class="admin-footer">
-        <div class="footer-container">
-            <!-- Logo et description -->
-            <div class="footer-section footer-brand">
-                <div class="footer-logo">
-                    <img src="/assets/img/logo.png" alt="TechnoPomme" class="footer-logo-img">
-                    <span class="footer-logo-text">TechnoPomme</span>
-                </div>
-                <p class="footer-description">
-                    Cidrerie artisanale depuis 1985. Nous produisons des cidres et jus de pomme de qualité, 
-                    issus de vergers traditionnels normands.
-                </p>
-                <div class="footer-social">
-                    <a href="#" class="social-link" title="Facebook">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" title="Instagram">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link" title="Twitter">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Liens rapides -->
-            <div class="footer-section">
-                <h4 class="footer-title">
-                    <span class="footer-icon">🍎</span> Navigation
-                </h4>
-                <ul class="footer-links">
-                    <li><a href="/">Accueil</a></li>
-                    <li><a href="/products">Nos produits</a></li>
-                    <li><a href="/contact">Contact</a></li>
-                    <li><a href="/orders">Mes commandes</a></li>
-                </ul>
-            </div>
-            
-            <!-- Administration -->
-            <div class="footer-section">
-                <h4 class="footer-title">
-                    <span class="footer-icon">⚙️</span> Administration
-                </h4>
-                <ul class="footer-links">
-                    <li><a href="/admin">Tableau de bord</a></li>
-                    <li><a href="/admin/products">Gestion produits</a></li>
-                    <li><a href="/admin/orders">Gestion commandes</a></li>
-                    <li><a href="/admin/users">Gestion utilisateurs</a></li>
-                </ul>
-            </div>
-            
-            <!-- Contact -->
-            <div class="footer-section">
-                <h4 class="footer-title">
-                    <span class="footer-icon">📍</span> Contact
-                </h4>
-                <div class="footer-contact">
-                    <p>
-                        <strong>Cidrerie TechnoPomme</strong><br>
-                        123 Route des Vergers<br>
-                        14000 Caen, Normandie
-                    </p>
-                    <p>
-                        <span class="contact-icon">📞</span> 02 31 00 00 00<br>
-                        <span class="contact-icon">✉️</span> contact@technopomme.fr
-                    </p>
-                    <p class="footer-hours">
-                        <strong>Horaires :</strong><br>
-                        Lun-Ven : 9h - 18h<br>
-                        Sam : 10h - 16h
-                    </p>
-                </div>
+
+    <!-- Barre du bas -->
+    <div class="footer-bottom">
+        <div class="footer-bottom-content">
+            <p class="copyright">
+                🍏 © <?= date('Y') ?> TechnoPomme - Tous droits réservés
+            </p>
+            <div class="footer-bottom-links">
+                <a href="/cookies">Politique de cookies</a>
+                <span class="separator">|</span>
+                <a href="#">Mentions légales</a>
+                <span class="separator">|</span>
+                <a href="#">CGV</a>
             </div>
         </div>
-        
-        <!-- Barre du bas -->
-        <div class="footer-bottom">
-            <div class="footer-bottom-content">
-                <p class="copyright">
-                    🍏 © <?= date('Y') ?> TechnoPomme - Tous droits réservés
-                </p>
-                <div class="footer-bottom-links">
-                    <a href="/cookies">Politique de cookies</a>
-                    <span class="separator">|</span>
-                    <a href="#">Mentions légales</a>
-                    <span class="separator">|</span>
-                    <a href="#">CGV</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-    
-    <style>
-        .admin-footer {
-            background: linear-gradient(135deg, #12372a 0%, #436850 100%);
-            color: #fff9e9;
-            margin-top: 50px;
-            font-family: 'Georgia', serif;
-        }
-        
+    </div>
+</footer>
+
+<style>
+    .admin-footer {
+        background: linear-gradient(135deg, #12372a 0%, #436850 100%);
+        color: #fff9e9;
+        margin-top: 50px;
+        font-family: 'Georgia', serif;
+    }
+
+    .footer-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 50px 30px 30px;
+    }
+
+    .footer-section {
+        padding: 10px;
+    }
+
+    .footer-brand {
+        max-width: 320px;
+    }
+
+    .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+
+    .footer-logo-img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+
+    .footer-logo-text {
+        font-size: 1.5em;
+        font-weight: bold;
+        background: linear-gradient(135deg, #c41e3a, #8bc34a);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .footer-description {
+        font-size: 0.9em;
+        line-height: 1.6;
+        opacity: 0.9;
+        margin-bottom: 20px;
+    }
+
+    .footer-social {
+        display: flex;
+        gap: 12px;
+    }
+
+    .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+        color: #fff9e9;
+        transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+        background: linear-gradient(135deg, #c41e3a, #8bc34a);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .footer-title {
+        font-size: 1.15em;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid rgba(139, 195, 74, 0.5);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .footer-icon {
+        font-size: 1.2em;
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links a {
+        color: #fff9e9;
+        text-decoration: none;
+        font-size: 0.95em;
+        opacity: 0.85;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .footer-links a::before {
+        content: '›';
+        font-size: 1.2em;
+        color: #8bc34a;
+        transition: transform 0.3s;
+    }
+
+    .footer-links a:hover {
+        opacity: 1;
+        color: #8bc34a;
+        padding-left: 5px;
+    }
+
+    .footer-links a:hover::before {
+        transform: translateX(3px);
+    }
+
+    .footer-contact {
+        font-size: 0.9em;
+        line-height: 1.8;
+    }
+
+    .footer-contact p {
+        margin-bottom: 15px;
+    }
+
+    .contact-icon {
+        margin-right: 5px;
+    }
+
+    .footer-hours {
+        background: rgba(255,255,255,0.1);
+        padding: 12px 15px;
+        border-radius: 8px;
+        border-left: 3px solid #8bc34a;
+    }
+
+    .footer-bottom {
+        background: rgba(0,0,0,0.2);
+        padding: 20px 30px;
+        margin-top: 20px;
+    }
+
+    .footer-bottom-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .copyright {
+        font-size: 0.9em;
+        opacity: 0.9;
+    }
+
+    .footer-bottom-links {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .footer-bottom-links a {
+        color: #fff9e9;
+        text-decoration: none;
+        font-size: 0.85em;
+        opacity: 0.8;
+        transition: all 0.3s;
+    }
+
+    .footer-bottom-links a:hover {
+        opacity: 1;
+        color: #8bc34a;
+    }
+
+    .footer-bottom-links .separator {
+        opacity: 0.5;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
         .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 50px 30px 30px;
+            grid-template-columns: 1fr;
+            text-align: center;
+            padding: 30px 20px;
         }
-        
-        .footer-section {
-            padding: 10px;
-        }
-        
+
         .footer-brand {
-            max-width: 320px;
+            max-width: 100%;
         }
-        
+
         .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 15px;
-        }
-        
-        .footer-logo-img {
-            width: 50px;
-            height: 50px;
-            object-fit: contain;
-            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
-        }
-        
-        .footer-logo-text {
-            font-size: 1.5em;
-            font-weight: bold;
-            background: linear-gradient(135deg, #c41e3a, #8bc34a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .footer-description {
-            font-size: 0.9em;
-            line-height: 1.6;
-            opacity: 0.9;
-            margin-bottom: 20px;
-        }
-        
-        .footer-social {
-            display: flex;
-            gap: 12px;
-        }
-        
-        .social-link {
-            display: flex;
-            align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            color: #fff9e9;
-            transition: all 0.3s ease;
         }
-        
-        .social-link:hover {
-            background: linear-gradient(135deg, #c41e3a, #8bc34a);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+        .footer-social {
+            justify-content: center;
         }
-        
-        .footer-title {
-            font-size: 1.15em;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid rgba(139, 195, 74, 0.5);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .footer-icon {
-            font-size: 1.2em;
-        }
-        
-        .footer-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: #fff9e9;
-            text-decoration: none;
-            font-size: 0.95em;
-            opacity: 0.85;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
+
         .footer-links a::before {
-            content: '›';
-            font-size: 1.2em;
-            color: #8bc34a;
-            transition: transform 0.3s;
+            display: none;
         }
-        
-        .footer-links a:hover {
-            opacity: 1;
-            color: #8bc34a;
-            padding-left: 5px;
-        }
-        
-        .footer-links a:hover::before {
-            transform: translateX(3px);
-        }
-        
-        .footer-contact {
-            font-size: 0.9em;
-            line-height: 1.8;
-        }
-        
-        .footer-contact p {
-            margin-bottom: 15px;
-        }
-        
-        .contact-icon {
-            margin-right: 5px;
-        }
-        
-        .footer-hours {
-            background: rgba(255,255,255,0.1);
-            padding: 12px 15px;
-            border-radius: 8px;
-            border-left: 3px solid #8bc34a;
-        }
-        
-        .footer-bottom {
-            background: rgba(0,0,0,0.2);
-            padding: 20px 30px;
-            margin-top: 20px;
-        }
-        
+
         .footer-bottom-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
+            flex-direction: column;
+            text-align: center;
         }
-        
-        .copyright {
-            font-size: 0.9em;
-            opacity: 0.9;
-        }
-        
-        .footer-bottom-links {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        
-        .footer-bottom-links a {
-            color: #fff9e9;
-            text-decoration: none;
-            font-size: 0.85em;
-            opacity: 0.8;
-            transition: all 0.3s;
-        }
-        
-        .footer-bottom-links a:hover {
-            opacity: 1;
-            color: #8bc34a;
-        }
-        
-        .footer-bottom-links .separator {
-            opacity: 0.5;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .footer-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-                padding: 30px 20px;
-            }
-            
-            .footer-brand {
-                max-width: 100%;
-            }
-            
-            .footer-logo {
-                justify-content: center;
-            }
-            
-            .footer-social {
-                justify-content: center;
-            }
-            
-            .footer-links a::before {
-                display: none;
-            }
-            
-            .footer-bottom-content {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-    </style>
+    }
+</style>
 </body>
 </html>
