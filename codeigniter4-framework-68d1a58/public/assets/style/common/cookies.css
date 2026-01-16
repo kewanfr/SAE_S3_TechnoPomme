@@ -1,0 +1,32 @@
+/* Styles pour le bandeau de cookies */
+#cookieBanner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(20,20,20,0.95);
+    color: white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    z-index: 999999;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.25);
+}
+
+#cookieBanner > * {
+    margin: 20px;
+}
+
+.cookie-button {
+    background: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.cookie-button:hover {
+    opacity: 0.9;
+}

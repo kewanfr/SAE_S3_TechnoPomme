@@ -1,65 +1,8 @@
     <head>
     <link rel="stylesheet" href="/assets/style/header.css">
+    <link rel="stylesheet" href="/assets/style/common/header-theme.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
     <link rel="icon" href="/assets/img/logo.png">
-
-        <style>
-        /* Thème cidrerie - couleurs pommes/nature */
-        :root {
-            --pomme-rouge: #c41e3a;
-            --pomme-verte: #8bc34a;
-            --pomme-jaune: #ffc107;
-            --terre: #8b4513;
-            --bois: #d2691e;
-        }
-        .headerbar { background: linear-gradient(135deg, var(--pomme-rouge) 0%, var(--pomme-verte) 100%); }
-        .btn, button[type="submit"] { background: var(--pomme-rouge) !important; transition: all 0.3s; }
-        .btn:hover, button[type="submit"]:hover { background: #a01828 !important; transform: translateY(-2px); }
-        .material-symbols-outlined { color: white; }
-        
-        .user-info-header {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            font-size: 0.9em;
-        }
-        
-        .user-info-header .username {
-            font-weight: bold;
-            font-size: 1.2em;
-            margin-bottom: 3px;
-        }
-        
-        .user-info-header .roles {
-            font-size: 0.85em;
-            opacity: 0.95;
-            margin-bottom: 5px;
-        }
-        
-        .role-badge-header {
-            display: inline-block;
-            padding: 3px 10px;
-            border-radius: 12px;
-            background: rgba(255,255,255,0.4);
-            margin-right: 5px;
-            font-size: 0.9em;
-            font-weight: bold;
-        }
-        
-        .logout-btn {
-            background: #dc3545;
-            padding: 4px 12px;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 0.85em;
-            display: inline-block;
-            transition: all 0.3s;
-        }
-        
-        .logout-btn:hover {
-            background: #c82333;
-        }
-    </style>
 </head>
 <header class="headerbar">
     <div class="header-content">

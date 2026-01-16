@@ -16,7 +16,18 @@ class App extends BaseConfig
      *
      * E.g., http://example.com/
      */
-    public string $baseURL = 'https://technopomme.kewan.fr/';
+    public string $baseURL = 'http://localhost/';
+
+    public function __construct()
+    {
+        parent::__construct();
+
+        // Détection automatique du baseURL basée sur le domaine actuel
+        if (isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] !== '') {
+            $scheme = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') ? 'https' : 'http';
+            $this->baseURL = $scheme . '://' . $_SERVER['HTTP_HOST'] . '/';
+        }
+    }
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
@@ -29,7 +40,7 @@ class App extends BaseConfig
      *
      * @var list<string>
      */
-    public array $allowedHostnames = ['localhost', '127.0.0.1', 'sae.home.kewan.fr', 'technopomme.kewan.fr', 'pommehub.kewan.fr', 'pommehub.kewan.dev'];
+    public array $allowedHostnames = ['localhost', 'localhost:8080', '127.0.0.1', 'sae.home.kewan.fr', 'technopomme.kewan.fr', 'pommehub.kewan.fr', 'pommehub.kewan.dev'];
 
     /**
      * --------------------------------------------------------------------------

@@ -1,27 +1,5 @@
 <?= view('admin/header') ?>
 
-<style>
-    .badge { padding: 5px 10px; border-radius: 12px; font-size: 12px; font-weight: bold; margin-right: 5px; }
-    .badge-admin { background: #dc3545; color: white; }
-    .badge-commercial { background: #17a2b8; color: white; }
-    .badge-client { background: #6c757d; color: white; }
-    .user-details { font-size: 0.85em; color: #666; margin-top: 3px; }
-    .user-details-icon { margin-right: 3px; }
-    .btn-delete {
-        background: #dc3545;
-        color: white;
-        padding: 8px 12px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 14px;
-        transition: all 0.3s;
-    }
-    .btn-delete:hover {
-        background: #c82333;
-    }
-</style>
-
 <div class="header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
     <h2 class="admin-title" style="margin: 0;">Gestion des Utilisateurs</h2>
     <a href="/admin/users/create" class="btn-primary" style="text-decoration: none;">+ Créer un utilisateur</a>

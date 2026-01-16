@@ -1,11 +1,5 @@
 <?= view('admin/header') ?>
 
-<style>
-    .low-stock { background: #fff3cd; }
-    .stock-actions { display: flex; gap: 10px; align-items: center; }
-    .stock-actions input { width: 80px; padding: 5px; border: 1px solid #ddd; border-radius: 4px; }
-</style>
-
 <h2 class="admin-title">Gestion des Stocks</h2>
 
 <div>

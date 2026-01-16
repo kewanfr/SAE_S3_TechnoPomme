@@ -83,17 +83,4 @@
     <?php endif; ?>
 </div>
 
-<style>
-    .badge {
-        padding: 5px 10px;
-        border-radius: 12px;
-        font-size: 12px;
-        font-weight: bold;
-    }
-    .badge-success { background: #d4edda; color: #155724; }
-    .badge-warning { background: #fff3cd; color: #856404; }
-    .badge-info { background: #d1ecf1; color: #0c5460; }
-    .badge-danger { background: #f8d7da; color: #721c24; }
-</style>
-
 <?= view('admin/footer') ?>

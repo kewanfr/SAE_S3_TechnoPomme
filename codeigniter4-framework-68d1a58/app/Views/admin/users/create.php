@@ -1,34 +1,5 @@
 <?= $this->include('admin/header') ?>
 
-<style>
-    .checkbox-group {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .checkbox-item {
-        display: flex;
-        align-items: center;
-        padding: 10px;
-        background-color: #f8f9fa;
-        border-radius: 5px;
-    }
-    
-    .checkbox-item input[type="checkbox"] {
-        margin-right: 10px;
-        width: 18px;
-        height: 18px;
-        cursor: pointer;
-    }
-    
-    .checkbox-item label {
-        margin: 0;
-        cursor: pointer;
-        font-weight: normal;
-    }
-</style>
-
 <div class="header">
     <h1>Créer un nouvel utilisateur</h1>
     <a href="/admin/users" class="btn-secondary">← Retour à la liste</a>

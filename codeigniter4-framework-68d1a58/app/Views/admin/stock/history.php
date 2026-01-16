@@ -2,15 +2,6 @@
 
 <h2 class="admin-title">Historique des mouvements de stock</h2>
 
-<style>
-    table { width: 100%; border-collapse: collapse; }
-    th, td { padding: 10px; border-bottom: 1px solid #ddd; }
-    th { background: #f7f7f7; text-align: left; }
-    .qty-plus { color: #28a745; font-weight: bold; }
-    .qty-minus { color: #dc3545; font-weight: bold; }
-    .reason { font-weight: bold; }
-</style>
-
 <div>
     <table>
         <thead>
