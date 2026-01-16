@@ -467,5 +467,7 @@
         handleScroll();
     })();
     </script>
+
+<?= view('footer') ?>
 </body>
 </html>

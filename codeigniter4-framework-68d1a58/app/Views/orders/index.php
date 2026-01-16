@@ -48,5 +48,7 @@
             <?php endforeach; ?>
         <?php endif; ?>
     </div>
+
+<?= view('footer') ?>
 </body>
 </html>

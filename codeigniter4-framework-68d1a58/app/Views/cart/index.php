@@ -258,5 +258,7 @@
             });
         });
     </script>
+
+<?= view('footer') ?>
 </body>
 </html>

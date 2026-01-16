@@ -249,5 +249,6 @@ Affiche les informations personnelles et professionnelles, permet la modificatio
     }
 </script>
 
+<?= view('footer') ?>
 </body>
 </html>

@@ -238,5 +238,7 @@
             <?php endif; ?>
         </div>
     </div>
+
+<?= view('footer') ?>
 </body>
 </html>

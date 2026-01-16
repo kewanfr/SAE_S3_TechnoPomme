@@ -234,5 +234,7 @@ Affiche les coordonnées, horaires et un formulaire pour contacter l'équipe.
         <a href="/" class="back-link">← Retour à l'accueil</a>
     </div>
 </div>
+
+<?= view('footer') ?>
 </body>
 </html>

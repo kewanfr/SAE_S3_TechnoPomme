@@ -207,5 +207,6 @@
     document.querySelector('.delivery-option').classList.add('selected');
 </script>
 
+<?= view('footer') ?>
 </body>
 </html>
