@@ -16,6 +16,7 @@ Affiche les coordonnées, horaires et un formulaire pour contacter l'équipe.
             background: linear-gradient(to bottom, #f5f5dc 0%, #d2b48c 100%);
             background-attachment: fixed;
             padding: 20px;
+            padding-top: 165px;
             padding-left: 0px;
         }
 
