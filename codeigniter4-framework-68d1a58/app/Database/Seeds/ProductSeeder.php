@@ -14,7 +14,7 @@ class ProductSeeder extends Seeder
                 'desc' => 'Cidre brut traditionnel élaboré avec nos pommes à cidre récoltées à maturité. Notes acidulées et fraîches.',
                 'img_src' => '/assets/img/products/cidre-brut.webp',
                 'price' => 4.50,
-                'quantity' => 120,
+                'quantity' => 4,
                 'format' => '75cl',
                 'category' => 'Cidres',
                 'tags' => 'brut,traditionnel,bio'
@@ -24,7 +24,7 @@ class ProductSeeder extends Seeder
                 'desc' => 'Cidre doux fruité, légèrement sucré. Parfait pour l\'apéritif ou accompagner les desserts.',
                 'img_src' => '/assets/img/products/cidre-doux.webp',
                 'price' => 4.50,
-                'quantity' => 95,
+                'quantity' => 15,
                 'format' => '75cl',
                 'category' => 'Cidres',
                 'tags' => 'doux,fruité'
@@ -34,7 +34,7 @@ class ProductSeeder extends Seeder
                 'desc' => 'Pur jus de pomme sans sucre ajouté, 100% fruits pressés. Goût authentique de nos vergers.',
                 'img_src' => '/assets/img/products/jus-pomme.webp',
                 'price' => 3.20,
-                'quantity' => 150,
+                'quantity' => 0,
                 'format' => '1L',
                 'category' => 'Jus',
                 'tags' => 'jus,sans-alcool,bio'

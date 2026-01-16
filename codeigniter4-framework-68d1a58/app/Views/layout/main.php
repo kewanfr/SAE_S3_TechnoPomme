@@ -200,6 +200,25 @@
         .add-to-cart-btn:hover {
             background: #a01828;
         }
+
+
+        .out-of-stock {
+            color: rgb(203, 27, 27);
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        .low-stock-warning {
+            color: orange;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .limited-stock-info {
+            color: blue;
+            font-weight: bold;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
@@ -246,7 +265,7 @@
         <h2 style="color: #c41e3a; font-size: 2em; margin-bottom: 30px; text-align: center; align-items:center;">Nos Produits Phares</h2>
         <div class="products-container" style="margin-bottom: 30px;">
             <?php 
-            $featuredProducts = array_slice($products, 0, 5); 
+            $featuredProducts = array_slice($products, 0, 8); 
             foreach ($featuredProducts as $product): 
             ?>
                 <?= view("products", $product); ?>

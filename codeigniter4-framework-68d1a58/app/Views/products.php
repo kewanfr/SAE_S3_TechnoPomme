@@ -45,7 +45,13 @@
                     (<?= number_format($priceHT, 2) ?> € HT)
                 </div>
             </div>
-            <span class='product_qtt'>Stock: <?= esc($quantity ?? '0') ?></span>
+            <?php if (isset($quantity) && $quantity <= 0): ?>
+                <span class='out-of-stock'>Rupture de stock</span>
+            <?php elseif (isset($quantity) && $quantity < 5): ?>
+                <span class='low-stock-warning'>⚠️ <?= esc($quantity) ?> en stock !</span>
+            <?php elseif (isset($quantity) && $quantity < 20): ?>
+                <span class='limited-stock-info'>ℹ️ Forte demande</span>
+            <?php endif; ?>
         </div>
         
         <div style="margin-top: auto; display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
